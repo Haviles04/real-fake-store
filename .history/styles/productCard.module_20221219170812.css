@@ -1,0 +1,29 @@
+
+.productImage{
+    width: 300px;
+    height: auto;
+}
+
+.text{
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(66, 66, 66);
+}
+
+@media only screen and (max-width: 600px) {
+    .productCard{
+        width: 90%;
+        height: 350px;
+        padding: 2px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .productTitle{
+        height: 50px;
+    }
+
+    .productImage{
+        width: 100%;
+        height: auto;
+    }
+}

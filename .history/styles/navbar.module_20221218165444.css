@@ -1,0 +1,38 @@
+.mainBar{
+    width: 100%;
+    height: 8rem;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    padding-left: 25px;
+    width: 8rem;
+    height:auto;
+}
+
+.linkContainer{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.searchAndCart{
+    margin-right: 25px;
+}
+
+.cartText{
+    padding: 5px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .mainBar{
+        width: 100vw;
+        ;
+    }
+  }

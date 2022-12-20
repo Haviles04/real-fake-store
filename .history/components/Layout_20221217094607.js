@@ -1,0 +1,13 @@
+import styles from '../styles/layout.module.css'
+
+function Layout({children}) {
+  return (
+    <div className={styles.main}>
+        <div className={style.container}>
+        {children}
+        </div>
+    </div>
+  )
+}
+
+export default Layout

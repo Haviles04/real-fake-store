@@ -1,0 +1,9 @@
+.productImage{
+    width: 300px;
+    height: auto;
+}
+
+.text{
+    padding-bottom: 25px;
+    border-bottom: 1px solid black;
+}

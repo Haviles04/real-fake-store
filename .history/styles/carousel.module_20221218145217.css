@@ -1,0 +1,29 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainCaro{
+    padding-top: 50px;
+    width: 925px;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+}
+
+.productCard{
+    padding: 5px;
+}
+
+.buttons{
+    padding: 20px;
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+.buttons:hover{
+    cursor: pointer;
+}

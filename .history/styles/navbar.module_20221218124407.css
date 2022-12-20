@@ -1,0 +1,14 @@
+.mainBar{
+    width: 100%;
+    height: 8rem;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    margin-top: 10px;
+    width: 8rem;
+    height:auto;
+}

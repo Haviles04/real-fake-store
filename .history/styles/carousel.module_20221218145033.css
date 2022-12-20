@@ -1,0 +1,15 @@
+.main{
+    display: flex;
+}
+
+.mainCaro{
+    padding-top: 50px;
+    width: 925px;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+}
+
+.productCard{
+    padding: 5px;
+}

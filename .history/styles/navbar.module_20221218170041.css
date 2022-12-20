@@ -1,0 +1,31 @@
+.mainBar{
+    width: 100vw;
+    height: 8rem;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    padding-left: 25px;
+    width: 8rem;
+    height:auto;
+}
+
+.linkContainer{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.searchAndCart{
+    padding-right: 25px;
+}
+
+.cartText{
+    padding: 5px;
+}
+

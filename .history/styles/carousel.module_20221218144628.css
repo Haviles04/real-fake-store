@@ -1,0 +1,10 @@
+.mainCaro{
+    width: 920px;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+}
+
+.productCard{
+    padding: 5px;
+}

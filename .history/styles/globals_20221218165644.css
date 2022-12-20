@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Faustina:wght@400;700&display=swap');
+
+*{
+  font-family: 'Faustina', serif;
+}
+
+@layer components {
+  #__next {
+      @apply h-full w-full
+  }
+  html,
+  body {
+      @apply h-full;
+  }
+}
