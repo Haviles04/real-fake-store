@@ -6,13 +6,12 @@ export default function NavLinks({ cats, onMobile, setMenuIsOpen }) {
     onMobile ? setMenuIsOpen(false) : null;
   };
 
-
   return (
     <div className={styles.navList}>
       <ul>
         {cats.map((cat) => (
           <li key={cat.id}>
-            <Link onClick={() => closeMenu()} href={`/category/${cat.name.toLowerCase()}`}>
+            <Link onClick={() => closeMenu()} href={`/category/${cat.name}`}>
               {cat.name}
             </Link>
           </li>

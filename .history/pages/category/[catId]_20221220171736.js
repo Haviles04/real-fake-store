@@ -28,7 +28,7 @@ export async function getStaticPaths() {
   );
   return {
     paths: cats.map((item) => {
-      const catId = item.name.toLowerCase();
+      const catId = item.name;
       return {
         params: {
           catId,

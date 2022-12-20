@@ -21,7 +21,7 @@ export default function Category({ products }) {
 
 export async function getStaticProps({ params }) {
     const products = await fetch(
-      `https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts`
+      `https://api.escuelajs.co/api/v1/products`
     ).then((r) => r.json());
   
     return {

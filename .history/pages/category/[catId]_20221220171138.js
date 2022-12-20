@@ -23,12 +23,12 @@ export default function Category({ categoryItems }) {
 }
 
 export async function getStaticPaths() {
-  const cats = await fetch("https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/categories").then(
+  const cats = await fetch("https://api.escuelajs.co/api/v1/categories").then(
     (r) => r.json()
   );
   return {
     paths: cats.map((item) => {
-      const catId = item.name.toLowerCase();
+      const catId = item.id.toString();
       return {
         params: {
           catId,
@@ -41,7 +41,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const categoryItems = await fetch(
-    `https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/${params.catId}`
+    `https://api.escuelajs.co/api/v1/categories/${params.catId}/products`
   ).then((r) => r.json());
 
   return {

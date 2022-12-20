@@ -24,7 +24,7 @@ export default function Home({ products }) {
 
 export async function getStaticProps() {
   const products = await fetch(
-    "https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts?page=1&limit=9"
+    "https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts?page=4&limit=9"
   ).then((r) => r.json());
   return {
     props: {
