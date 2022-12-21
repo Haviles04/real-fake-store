@@ -1,0 +1,33 @@
+.productPageContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productPageContainer h1{
+    padding: 25px;
+}
+
+.productContainer{
+    padding: 25px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.bigImage{
+    width: 40%;
+    border-radius: 10px;
+}
+
+.imageTwo .imageThree{
+    border-radius:10px;
+    width: 20%;
+    height: 20%;
+    align-self: flex-end;
+}
+
+.imageTwo:hover{
+    cursor: pointer;
+}

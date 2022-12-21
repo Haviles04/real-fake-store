@@ -1,0 +1,23 @@
+.productPageContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.productContainer{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.imageOne{
+    width: 40%;
+}
+
+.imageTwo{
+    width: 20%;
+    height: 20%;
+    justify-self: flex-end;
+}

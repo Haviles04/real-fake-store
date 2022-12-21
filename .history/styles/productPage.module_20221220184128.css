@@ -1,0 +1,25 @@
+.productPageContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.productContainer{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.imageOne{
+    width: 40%;
+    border-radius: 10px;
+}
+
+.imageTwo{
+    border-radius:10px;
+    width: 20%;
+    height: 20%;
+    align-self: flex-end;
+}

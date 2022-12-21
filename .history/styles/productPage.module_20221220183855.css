@@ -1,0 +1,15 @@
+.productPageContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.productContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

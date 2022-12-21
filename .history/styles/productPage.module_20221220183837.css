@@ -1,0 +1,13 @@
+.productPageContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.productContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
