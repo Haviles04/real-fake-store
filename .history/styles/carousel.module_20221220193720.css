@@ -34,15 +34,15 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .mainCaro{
-        width: 90%;
-        height: auto;
+    .main{
+        display: none;
     }
 
     .productCard{
         width: 33%;
-        height: auto;
+        padding: 0;
     }
+    
   
 
     .buttons{
