@@ -7,15 +7,6 @@
     color: black;
 }
 
-.productCard button{
-    margin-bottom: 10px;
-    
-}
-
-.productCard button:hover{
-    cursor: pointer;
-}
-
 .productImage{
     width: 300px;
     height: auto;
@@ -33,6 +24,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        margin-bottom: 10px;
     }
 
     .productTitle{

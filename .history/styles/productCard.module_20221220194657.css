@@ -9,11 +9,6 @@
 
 .productCard button{
     margin-bottom: 10px;
-    
-}
-
-.productCard button:hover{
-    cursor: pointer;
 }
 
 .productImage{
