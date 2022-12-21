@@ -1,7 +1,7 @@
 import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
-
+import all from '../api/category/all'
 
 export default function Products({ products }) {
 
@@ -22,7 +22,7 @@ export default function Products({ products }) {
 
 export async function getStaticProps({ params }) {
     const products = await fetch(
-      `http://localhost:3000/api/category/all`
+      `../api/category/all`
     ).then((r) => r.json());
   
     return {

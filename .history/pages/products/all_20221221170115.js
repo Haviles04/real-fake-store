@@ -22,7 +22,7 @@ export default function Products({ products }) {
 
 export async function getStaticProps({ params }) {
     const products = await fetch(
-      `http://localhost:3000/api/category/all`
+      `https:localhost:3000/api/category/all`
     ).then((r) => r.json());
   
     return {

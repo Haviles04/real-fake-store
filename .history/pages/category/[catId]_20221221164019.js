@@ -40,7 +40,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const categoryItems = await fetch(
-    `http://localhost:3000/api/category/${params.catId}`
+    `https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/${params.catId}`
   ).then((r) => r.json());
 
   return {
