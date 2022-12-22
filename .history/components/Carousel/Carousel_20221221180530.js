@@ -8,7 +8,12 @@ function Carousel({ products }) {
   const caro = useRef();
   const pcRef = useRef();
   const currentX = useRef(0);
-
+  const [productWidth, setProductWidth] = useState(null);
+  
+ /* useEffect(() => {
+   setProductWidth(caro.current.offsetWidth / 3)
+  }, [caro.current.offsetWidth])*/
+  
 
 
   const scrollForward = () => {
@@ -41,7 +46,9 @@ function Carousel({ products }) {
       </button>
       <div ref={caro} className={styles.mainCaro}>
         {products.map((item) => (
-            <CarouselCard pcRef={pcRef} key={item.id} item={item} />
+          <div ref={pcRef} key={item.id} className={styles.productCard}>
+            <CarouselCard productWidth={productWidth} key={item.id} item={item} />
+          </div>
         ))}
       </div>
       <button onClick={() => scrollForward()} className={styles.buttons}>

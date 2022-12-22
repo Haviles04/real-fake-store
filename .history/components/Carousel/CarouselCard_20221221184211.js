@@ -1,11 +1,10 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { GrCart } from "react-icons/gr";
 import { useState } from "react";
 import styles from '../../styles/carousel.module.css'
 
-function CarouselCard({item, pcRef}) {
+function CarouselCard({item, productWidth}) {
     const [hoverPic, setHoverPic] = useState(item.images[0]);
 
     const handleMouseOver = () => {
@@ -16,9 +15,9 @@ function CarouselCard({item, pcRef}) {
       item.images[0] ? setHoverPic(item.images[0]) : null;
     };
     return (
-      <div ref={pcRef} className={styles.productCard} key={item.id}>
+      <div className={styles.productCard} key={item.id}>
         <Link href={`/products/${item.id}`}>
-          <img
+          <Image
             className={styles.productImage}
             onMouseOver={() => {
               handleMouseOver();
@@ -27,11 +26,16 @@ function CarouselCard({item, pcRef}) {
               handleMouseOut();
             }}
             src={`${hoverPic}`}
+            width={100}
+            height={100}
             alt={item.title}
-          ></img>
+          ></Image>
           <h4 className={styles.productTitle}>{item.title}</h4>
           </Link>
           <p className={styles.text}>${item.price}</p>
+        <button>
+          <GrCart /> Add to cart
+        </button>
       </div>
     );
 }

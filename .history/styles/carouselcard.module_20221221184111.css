@@ -1,0 +1,9 @@
+.productCard{
+    height: 33%;
+    padding: 0px;
+}
+
+.productCard Image{
+    width: 33%;
+    height: auto;
+}

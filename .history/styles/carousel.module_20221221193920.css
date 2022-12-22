@@ -67,9 +67,6 @@
         scroll-snap-type: x mandatory;
     }
 
-    .mainCaro::-webkit-scrollbar{
-        display: none;
-    }
 
   
 

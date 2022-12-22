@@ -32,6 +32,9 @@ function CarouselCard({item, pcRef}) {
           <h4 className={styles.productTitle}>{item.title}</h4>
           </Link>
           <p className={styles.text}>${item.price}</p>
+        <button className={styles.productButton}>
+          <GrCart /> Add to cart
+        </button>
       </div>
     );
 }

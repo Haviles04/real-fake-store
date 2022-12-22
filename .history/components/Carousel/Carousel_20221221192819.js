@@ -41,7 +41,7 @@ function Carousel({ products }) {
       </button>
       <div ref={caro} className={styles.mainCaro}>
         {products.map((item) => (
-            <CarouselCard pcRef={pcRef} key={item.id} item={item} />
+            <CarouselCard  key={item.id} item={item} />
         ))}
       </div>
       <button onClick={() => scrollForward()} className={styles.buttons}>

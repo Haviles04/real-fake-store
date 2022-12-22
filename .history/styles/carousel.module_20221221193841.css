@@ -38,7 +38,7 @@
     flex-shrink: 0;
     width: 33.333333333333333%;
     height: 100%;
-    scroll-snap-align: start;
+    
 }
 
 .productButton{
@@ -67,9 +67,6 @@
         scroll-snap-type: x mandatory;
     }
 
-    .mainCaro::-webkit-scrollbar{
-        display: none;
-    }
 
   
 
