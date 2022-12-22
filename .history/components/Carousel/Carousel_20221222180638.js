@@ -5,10 +5,6 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 function Carousel({ products }) {
-
-  console.log(products.length);
-
-
   const caro = useRef();
   const pcRef = useRef();
   const currentX = useRef(0);
@@ -19,25 +15,23 @@ function Carousel({ products }) {
 
   const scrollForward = () => {
     setMaxBackwards(false);
-    caro.current.offsetWidth <= 510 ? onMobile = true: onMobile = false;
+    caro.current.offsetWidth >= 660 ? (onMobile = true) : (onMobile = false);
     onMobile
       ? (offset = pcRef.current.offsetWidth * 2)
       : (offset = pcRef.current.offsetWidth * 3);
     currentX.current = currentX.current + offset;
     caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
-    console.log(parseInt(pcRef.current.offsetWidth * products.length));
-    currentX.current >= pcRef.current.offsetWidth * (products.length - 1) ? setMaxForward(true): false;
   }
 
   const scrollBackwards = () => {
     setMaxForward(false);
-    caro.current.offsetWidth <= 510 ? onMobile = true : onMobile = false;
+    caro.current.offsetWidth >= 510 ? (onMobile = true) : (onMobile = false);
     onMobile
       ? (offset = pcRef.current.offsetWidth * 2)
       : (offset = pcRef.current.offsetWidth * 3);
     currentX.current = currentX.current - offset;
     caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
-    currentX.current <= 0 ? setMaxBackwards(true) : null;
+    currentX.current === 0 ? setMaxBackwards(true) : null;
   };
 
   return (

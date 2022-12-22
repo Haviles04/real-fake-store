@@ -64,7 +64,6 @@
         height: auto;
         -webkit-overflow-scrolling: touch;
         overflow-x: scroll;
-        scroll-snap-type: x mandatory;
     }
 
     .mainCaro::-webkit-scrollbar{

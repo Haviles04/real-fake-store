@@ -25,13 +25,11 @@ function Carousel({ products }) {
       : (offset = pcRef.current.offsetWidth * 3);
     currentX.current = currentX.current + offset;
     caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
-    console.log(parseInt(pcRef.current.offsetWidth * products.length));
-    currentX.current >= pcRef.current.offsetWidth * (products.length - 1) ? setMaxForward(true): false;
   }
 
   const scrollBackwards = () => {
     setMaxForward(false);
-    caro.current.offsetWidth <= 510 ? onMobile = true : onMobile = false;
+    caro.current.offsetWidth >= 510 ? (onMobile = true) : (onMobile = false);
     onMobile
       ? (offset = pcRef.current.offsetWidth * 2)
       : (offset = pcRef.current.offsetWidth * 3);

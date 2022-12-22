@@ -46,6 +46,7 @@
 }
 
 .buttons{
+    position: absolute;
     padding: 20px;
     margin: 5px;
     border: none;
@@ -58,7 +59,7 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 600px) {
     .mainCaro{
         width: 90%;
         height: auto;
@@ -71,9 +72,6 @@
         display: none;
     }
 
-    .productCard{
-        width: 50%;
-    }
   
 
     .buttons{

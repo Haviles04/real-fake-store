@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    width: 33.333333333333333%;
+    width: 50%;
     height: 100%;
     scroll-snap-align: start;
 }
@@ -58,7 +58,7 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 600px) {
     .mainCaro{
         width: 90%;
         height: auto;
