@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "../../styles/carousel.module.css";
 import CarouselCard from "./CarouselCard";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -12,6 +12,11 @@ function Carousel({ products }) {
   const [maxBackwards, setMaxBackwards] = useState(true);
   let onMobile;
   let offset;
+
+  useEffect(() => {
+    maxForward ? setMaxBackwards(false): setMaxBackwards(true);
+  }, [maxForward, maxBackwards]);
+  
 
   const handleCLickForward = () => {
     setMaxBackwards(false);
@@ -37,21 +42,21 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-   if (currentX.current <= pcRef.current.offsetWidth * 2) {
-      setMaxBackwards(true);
-      setMaxForward(false);
+    if (currentX.current <= pcRef.current.offsetWidth * 2) {
+      setMaxBackwards(true)
+      
     } else if (
       onMobile &&
       currentX.current >= pcRef.current.offsetWidth * (products.length - 2)
     ) {
-      setMaxForward(true);
-      setMaxBackwards(false);
+      setMaxForward(true)
+      
     } else if (!onMobile && currentX.current >= offset * 2) {
-      setMaxForward(true);
-      setMaxBackwards(false);
+      setMaxForward(true)
+      
     } else {
-      setMaxBackwards(false);
-      setMaxForward(false);
+      
+      setMaxForward(false)
     }
   };
 

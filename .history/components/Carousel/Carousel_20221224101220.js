@@ -16,7 +16,7 @@ function Carousel({ products }) {
   const handleCLickForward = () => {
     setMaxBackwards(false);
     checkOnMobile();
-    currentX.current = currentX.current + offset;
+    currentX.current = currentX.current + offset + pcRef.current.offsetWidth;
     caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
     showOrHideBtns();
   };
@@ -24,7 +24,7 @@ function Carousel({ products }) {
   const handleClickBackward = () => {
     setMaxForward(false);
     checkOnMobile();
-    currentX.current = currentX.current - offset;
+    currentX.current = currentX.current - offset + pcRef.current.offsetWidth;
     caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
     showOrHideBtns();
   };
@@ -37,12 +37,12 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-   if (currentX.current <= pcRef.current.offsetWidth * 2) {
+   if (currentX.current <= pcRef.current.offsetWidth ) {
       setMaxBackwards(true);
       setMaxForward(false);
     } else if (
       onMobile &&
-      currentX.current >= pcRef.current.offsetWidth * (products.length - 2)
+      currentX.current >= pcRef.current.offsetWidth * (products.length - 1)
     ) {
       setMaxForward(true);
       setMaxBackwards(false);

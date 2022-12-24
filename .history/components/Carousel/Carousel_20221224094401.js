@@ -37,21 +37,20 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-   if (currentX.current <= pcRef.current.offsetWidth * 2) {
+    if (currentX.current <= pcRef.current.offsetWidth ) {
       setMaxBackwards(true);
       setMaxForward(false);
-    } else if (
-      onMobile &&
-      currentX.current >= pcRef.current.offsetWidth * (products.length - 2)
-    ) {
+    } else if (onMobile) {
+      if (
+        currentX.current >=
+        pcRef.current.offsetWidth * (products.length - 2 )
+      ) {
+        setMaxForward(true);
+        setMaxBackwards(false);
+      }
+    } else if (currentX.current >= offset * 2) {
       setMaxForward(true);
       setMaxBackwards(false);
-    } else if (!onMobile && currentX.current >= offset * 2) {
-      setMaxForward(true);
-      setMaxBackwards(false);
-    } else {
-      setMaxBackwards(false);
-      setMaxForward(false);
     }
   };
 

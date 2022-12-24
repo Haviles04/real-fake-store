@@ -4,7 +4,7 @@ import { GrCart } from "react-icons/gr";
 import { useState } from "react";
 import styles from "../../styles/carousel.module.css";
 
-function CarouselCard({ item, pcRef, handleTouch }) {
+function CarouselCard({ item, pcRef, currentX }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
   let onMobile;
   let offset;
@@ -17,7 +17,11 @@ function CarouselCard({ item, pcRef, handleTouch }) {
     item.images[0] ? setHoverPic(item.images[0]) : null;
   };
 
-
+  const handleTouch = (e) => {
+    checkOnMobile();
+    currentX.current = e.offsetLeft;
+    showOrHideButtons();
+  };
 
   return (
     <div

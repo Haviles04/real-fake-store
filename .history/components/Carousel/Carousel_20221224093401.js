@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState} from "react";
 import styles from "../../styles/carousel.module.css";
 import CarouselCard from "./CarouselCard";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -30,34 +30,30 @@ function Carousel({ products }) {
   };
 
   const checkOnMobile = () => {
-    caro.current.offsetWidth <= 510 ? (onMobile = true) : (onMobile = false);
+    caro.current.offsetWidth <= 510
+      ? (onMobile = true)
+      : (onMobile = false);
     onMobile
       ? (offset = pcRef.current.offsetWidth * 2)
       : (offset = pcRef.current.offsetWidth * 3);
   };
 
   const showOrHideBtns = () => {
-   if (currentX.current <= pcRef.current.offsetWidth * 2) {
-      setMaxBackwards(true);
-      setMaxForward(false);
-    } else if (
-      onMobile &&
-      currentX.current >= pcRef.current.offsetWidth * (products.length - 2)
-    ) {
-      setMaxForward(true);
-      setMaxBackwards(false);
-    } else if (!onMobile && currentX.current >= offset * 2) {
-      setMaxForward(true);
-      setMaxBackwards(false);
-    } else {
-      setMaxBackwards(false);
-      setMaxForward(false);
+    if(currentX.current <= 0 ) {
+      setMaxBackwards(true)
+    }
+    else if(onMobile){
+      if(currentX.current >= pcRef.current.offsetWidth * (products.length - 1)){
+        setMaxForward(true); }
+    }else if(currentX.current >= offset * 2){
+      setMaxForward(true)
     }
   };
 
   const handleTouch = (e) => {
     checkOnMobile();
     currentX.current = e.offsetLeft;
+    console.log(currentX.current);
     showOrHideBtns();
   };
 

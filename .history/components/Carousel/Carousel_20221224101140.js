@@ -16,7 +16,7 @@ function Carousel({ products }) {
   const handleCLickForward = () => {
     setMaxBackwards(false);
     checkOnMobile();
-    currentX.current = currentX.current + offset;
+    currentX.current = currentX.current + offset + pcRef.current.offsetWidth;
     caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
     showOrHideBtns();
   };
@@ -24,7 +24,7 @@ function Carousel({ products }) {
   const handleClickBackward = () => {
     setMaxForward(false);
     checkOnMobile();
-    currentX.current = currentX.current - offset;
+    currentX.current = currentX.current - offset + pcRef.current.offsetWidth;
     caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
     showOrHideBtns();
   };

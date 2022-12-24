@@ -37,7 +37,7 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-   if (currentX.current <= pcRef.current.offsetWidth * 2) {
+    if (currentX.current <= pcRef.current.offsetWidth) {
       setMaxBackwards(true);
       setMaxForward(false);
     } else if (
@@ -46,7 +46,7 @@ function Carousel({ products }) {
     ) {
       setMaxForward(true);
       setMaxBackwards(false);
-    } else if (!onMobile && currentX.current >= offset * 2) {
+    } else if (currentX.current >= offset * 2) {
       setMaxForward(true);
       setMaxBackwards(false);
     } else {

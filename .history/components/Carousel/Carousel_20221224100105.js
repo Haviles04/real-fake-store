@@ -37,7 +37,13 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-   if (currentX.current <= pcRef.current.offsetWidth * 2) {
+    if (
+      currentX.current > 0 ||
+      currentX.current < pcRef.current.offsetWidth * 2
+    ) {
+      setMaxForward(false);
+      setMaxBackwards(false);
+    } else if (currentX.current <= pcRef.current.offsetWidth * 2) {
       setMaxBackwards(true);
       setMaxForward(false);
     } else if (
