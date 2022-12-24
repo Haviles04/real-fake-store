@@ -1,0 +1,43 @@
+.heroAd {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  max-width: 80%;
+}
+
+.heroImg {
+  width: 100%;
+  aspect-ratio: initial;
+}
+
+.container {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.smallerAd {
+  width: 80%;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 990px) {
+  .container {
+    padding: 0;
+    width: 100%;
+  }
+
+  .heroAd {
+    width:100%;
+    margin-top: 25px;
+  }
+
+  .heroImg {
+    display: none;
+  }
+}
