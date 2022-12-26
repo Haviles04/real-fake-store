@@ -84,11 +84,10 @@
   
     .buttons{
         position: absolute;
-        height: 5%;
+        height: auto;
         width: 10%;
         padding: 0;
-        background-color: rgba(128, 128, 128, 0.479);
-        border-radius: 25%;
+        background-color: gray;
     }   
     
     .button1{
@@ -96,7 +95,7 @@
         z-index: 2;
     }
     .button2{
-        left: 87%;
+        left: 83%;
     }
 
 }

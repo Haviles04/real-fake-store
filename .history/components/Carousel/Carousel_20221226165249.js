@@ -87,7 +87,7 @@ function Carousel({ products }) {
     <div className={styles.main}>
       <button
         onClick={() => handleClickBackward()}
-        className={styles.buttons + " " + styles.button1}
+        className={styles.buttons}
         style={
           maxBackwards
             ? {

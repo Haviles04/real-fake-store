@@ -87,14 +87,16 @@ function Carousel({ products }) {
     <div className={styles.main}>
       <button
         onClick={() => handleClickBackward()}
-        className={styles.buttons + " " + styles.button1}
+        className={styles.buttons}
         style={
           maxBackwards
             ? {
+                visibility: "hidden",
                 opacity: 0,
-                transition: "opacity 500ms linear",
+                transition: "visibility 0s 500ms, opacity 500ms linear",
               }
             : {
+                visibility: "visible",
                 opacity: 1,
                 transition: "opacity 500ms linear",
               }
@@ -121,12 +123,14 @@ function Carousel({ products }) {
         style={
           maxForward
             ? {
+                visibility: "hidden",
                 opacity: 0,
-                transition:"opacity 500ms ease",
+                transition: "visibility 0s 500ms, opacity 500ms linear",
               }
             : {
+                visibility: "visible",
                 opacity: 1,
-                transition: "opacity 500ms ease",
+                transition: "opacity 500ms linear",
               }
         }
       >

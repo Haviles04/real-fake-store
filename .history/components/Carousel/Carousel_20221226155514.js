@@ -34,18 +34,11 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-    if (
-      onMobile.current &&
-      newX.current >=
-        caro.current.scrollWidth - (offset - pcRef.current.offsetWidth * 0.5)
-    ) {
+    if (onMobile.current && newX.current >= caro.current.scrollWidth - (offset - (pcRef.current.offsetWidth * .5) ) ){
       setMaxForward(true);
-    } else if (
-      newX.current >=
-      caro.current.scrollWidth - offset - pcRef.current.offsetWidth * 0.5
-    ) {
+    } else if (newX.current >= caro.current.scrollWidth - offset - (pcRef.current.offsetWidth * .5)) {
       setMaxForward(true);
-    } else if (newX.current <= pcRef.current.offsetWidth * 0.5) {
+    } else if (newX.current <= (pcRef.current.offsetWidth * .5)) {
       setMaxBackwards(true);
     }
   };
@@ -71,33 +64,22 @@ function Carousel({ products }) {
   };
 
   const handleTouchEnd = () => {
-    setTimeout(() => {
-      newX.current = caro.current.scrollLeft;
-      touchEndX = newX.current;
-      setSwipeDirection(touchStartX, touchEndX);
-      swipeDirection === "Right"
-        ? setMaxForward(false)
-        : setMaxBackwards(false);
-      checkOnMobile();
-      showOrHideBtns();
-    }, 500);
+    setTimeout( () => {
+    newX.current = caro.current.scrollLeft;
+    touchEndX = newX.current;
+    setSwipeDirection(touchStartX, touchEndX);
+    swipeDirection === "Right" ? setMaxForward(false) : setMaxBackwards(false);
+    checkOnMobile();
+    showOrHideBtns();} , 1000);
   };
 
   return (
     <div className={styles.main}>
       <button
         onClick={() => handleClickBackward()}
-        className={styles.buttons + " " + styles.button1}
+        className={styles.buttons}
         style={
-          maxBackwards
-            ? {
-                opacity: 0,
-                transition: "opacity 500ms linear",
-              }
-            : {
-                opacity: 1,
-                transition: "opacity 500ms linear",
-              }
+          maxBackwards ? { visibility: "hidden" } : { visibility: "visible" }
         }
       >
         <AiOutlineArrowLeft size={25} />
@@ -117,17 +99,9 @@ function Carousel({ products }) {
       </div>
       <button
         onClick={() => handleCLickForward()}
-        className={styles.buttons + " " + styles.button2}
+        className={styles.buttons}
         style={
-          maxForward
-            ? {
-                opacity: 0,
-                transition:"opacity 500ms ease",
-              }
-            : {
-                opacity: 1,
-                transition: "opacity 500ms ease",
-              }
+          maxForward ? { visibility: "hidden" } : { visibility: "visible" }
         }
       >
         <AiOutlineArrowRight size={25} />

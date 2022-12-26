@@ -30,7 +30,7 @@ export default function Products({ pageProduct }) {
           <h1>{product.title}</h1>
           <div className={styles.productContainer}>
             <div className={styles.zoomContainer}>
-              <Image className={styles.bigImage} src={bigImage} alt={product.title} width={640} height={480} />
+              <Image className={styles.bigImage} src={bigImage} alt={product.title} width={400} height={400} />
             </div>
             <div className={styles.smallImageContainer}>
               <Image
@@ -45,7 +45,7 @@ export default function Products({ pageProduct }) {
                 className={styles.imageThree}
                 src={thirdImage}
                 alt={product.title}
-                width={640} height={480}
+                width={400} height={400}
               />
             </div>
           </div>

@@ -45,7 +45,7 @@ export default function Products({ pageProduct }) {
                 className={styles.imageThree}
                 src={thirdImage}
                 alt={product.title}
-                width={640} height={480}
+                width={400} height={400}
               />
             </div>
           </div>

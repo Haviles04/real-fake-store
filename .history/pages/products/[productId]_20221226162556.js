@@ -30,7 +30,7 @@ export default function Products({ pageProduct }) {
           <h1>{product.title}</h1>
           <div className={styles.productContainer}>
             <div className={styles.zoomContainer}>
-              <Image className={styles.bigImage} src={bigImage} alt={product.title} width={640} height={480} />
+              <Image className={styles.bigImage} src={bigImage} alt={product.title} />
             </div>
             <div className={styles.smallImageContainer}>
               <Image
@@ -38,14 +38,12 @@ export default function Products({ pageProduct }) {
                 onClick={() => swapImages("second")}
                 src={secondImage}
                 alt={product.title}
-                width={640} height={480}
               />
               <Image
                 onClick={() => swapImages("third")}
                 className={styles.imageThree}
                 src={thirdImage}
                 alt={product.title}
-                width={640} height={480}
               />
             </div>
           </div>

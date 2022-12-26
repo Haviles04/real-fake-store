@@ -84,19 +84,18 @@
   
     .buttons{
         position: absolute;
-        height: 5%;
+        height: 10%;
         width: 10%;
         padding: 0;
         background-color: rgba(128, 128, 128, 0.479);
-        border-radius: 25%;
     }   
     
     .button1{
-        left: 1%;
+        left: 0;
         z-index: 2;
     }
     .button2{
-        left: 87%;
+        left: 88%;
     }
 
 }

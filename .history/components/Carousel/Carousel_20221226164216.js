@@ -87,17 +87,9 @@ function Carousel({ products }) {
     <div className={styles.main}>
       <button
         onClick={() => handleClickBackward()}
-        className={styles.buttons + " " + styles.button1}
+        className={styles.buttons}
         style={
-          maxBackwards
-            ? {
-                opacity: 0,
-                transition: "opacity 500ms linear",
-              }
-            : {
-                opacity: 1,
-                transition: "opacity 500ms linear",
-              }
+          maxBackwards ? { visibility: "hidden" } : { visibility: "visible" }
         }
       >
         <AiOutlineArrowLeft size={25} />
@@ -118,17 +110,7 @@ function Carousel({ products }) {
       <button
         onClick={() => handleCLickForward()}
         className={styles.buttons + " " + styles.button2}
-        style={
-          maxForward
-            ? {
-                opacity: 0,
-                transition:"opacity 500ms ease",
-              }
-            : {
-                opacity: 1,
-                transition: "opacity 500ms ease",
-              }
-        }
+        style={maxForward ? { opacity: 0 } : { opacity: 1 }}
       >
         <AiOutlineArrowRight size={25} />
       </button>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "next/image";
 import Meta from "../../components/Meta";
 import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
@@ -30,22 +29,20 @@ export default function Products({ pageProduct }) {
           <h1>{product.title}</h1>
           <div className={styles.productContainer}>
             <div className={styles.zoomContainer}>
-              <Image className={styles.bigImage} src={bigImage} alt={product.title} width={640} height={480} />
+              <img className={styles.bigImage} src={bigImage} alt={product.title} />
             </div>
             <div className={styles.smallImageContainer}>
-              <Image
+              <img
                 className={styles.imageTwo}
                 onClick={() => swapImages("second")}
                 src={secondImage}
                 alt={product.title}
-                width={640} height={480}
               />
-              <Image
+              <img
                 onClick={() => swapImages("third")}
                 className={styles.imageThree}
                 src={thirdImage}
                 alt={product.title}
-                width={640} height={480}
               />
             </div>
           </div>
