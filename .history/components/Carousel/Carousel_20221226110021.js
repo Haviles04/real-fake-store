@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import styles from "../../styles/carousel.module.css";
 import CarouselCard from "./CarouselCard";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -7,7 +7,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 function Carousel({ products }) {
   const caro = useRef();
   const pcRef = useRef();
-  const newX = useRef(0);
+  const currentX = useRef(0);
   const onMobile = useRef();
   const [maxForward, setMaxForward] = useState(false);
   const [maxBackwards, setMaxBackwards] = useState(true);
@@ -16,11 +16,26 @@ function Carousel({ products }) {
   let touchEndX;
   let swipeDirection;
 
+
+  const handleCLickForward = () => {
+    setMaxBackwards(false);
+    checkOnMobile();
+    currentX.current = currentX.current + offset;
+    caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
+    showOrHideBtns();
+  };
+
+  const handleClickBackward = () => {
+    setMaxForward(false);
+    checkOnMobile();
+    currentX.current = currentX.current - offset;
+    caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
+    showOrHideBtns();
+  };
+
   const checkOnMobile = () => {
-    window.innerWidth <= 660
-      ? (onMobile.current = true)
-      : (onMobile.current = false);
-    onMobile.current
+    window.innerWidth < 660 ? (onMobile.current = true) : (onMobile.current = false);
+    onMobile
       ? (offset = pcRef.current.offsetWidth * 2)
       : (offset = pcRef.current.offsetWidth * 3);
   };
@@ -34,40 +49,22 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-    if (onMobile.current && newX.current >= caro.current.scrollWidth - offset) {
-      setMaxForward(true);
-    } else if (newX.current >= caro.current.scrollWidth - offset - 1) {
-      setMaxForward(true);
-    } else if (newX.current <= 0) {
+    if(caro.current.scrollLeft >= caro.current.offsetWidth){
+      setMaxForward(true);   
+      setMaxBackwards(false);   
+    } else if(caro.current.scrollLeft <= pcRef.current.offsetWidth * 2){
       setMaxBackwards(true);
     }
-  };
-
-  const handleCLickForward = () => {
-    setMaxBackwards(false);
-    checkOnMobile();
-    newX.current = caro.current.scrollLeft + offset;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-    showOrHideBtns();
-  };
-
-  const handleClickBackward = () => {
-    setMaxForward(false);
-    checkOnMobile();
-    newX.current = caro.current.scrollLeft - offset;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-    showOrHideBtns();
   };
 
   const handleTouchStart = () => {
     touchStartX = caro.current.scrollLeft;
   };
 
-  const handleTouchEnd = () => {
-    newX.current = caro.current.scrollLeft;
-    touchEndX = newX.current;
+  const handleTouchEnd = (e) => {
     setSwipeDirection(touchStartX, touchEndX);
-    swipeDirection === "Right" ? setMaxForward(false) : setMaxBackwards(false);
+    currentX.current = e.offsetLeft;
+    touchEndX = caro.current.scrollLeft;
     checkOnMobile();
     showOrHideBtns();
   };
@@ -89,7 +86,7 @@ function Carousel({ products }) {
             handleTouchEnd={handleTouchEnd}
             pcRef={pcRef}
             key={item.id}
-            newX={newX}
+            currentX={currentX}
             item={item}
             handleTouchStart={handleTouchStart}
           />

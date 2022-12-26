@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import styles from "../../styles/carousel.module.css";
 import CarouselCard from "./CarouselCard";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -7,20 +7,34 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 function Carousel({ products }) {
   const caro = useRef();
   const pcRef = useRef();
-  const newX = useRef(0);
-  const onMobile = useRef();
+  const currentX = useRef(0);
   const [maxForward, setMaxForward] = useState(false);
   const [maxBackwards, setMaxBackwards] = useState(true);
+  let onMobile;
   let offset;
   let touchStartX;
   let touchEndX;
   let swipeDirection;
 
+  const handleCLickForward = () => {
+    setMaxBackwards(false);
+    checkOnMobile();
+    currentX.current = currentX.current + offset;
+    caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
+    showOrHideBtns();
+  };
+
+  const handleClickBackward = () => {
+    setMaxForward(false);
+    checkOnMobile();
+    currentX.current = currentX.current - offset;
+    caro.current.scroll({ left: `${currentX.current}`, behavior: "smooth" });
+    showOrHideBtns();
+  };
+
   const checkOnMobile = () => {
-    window.innerWidth <= 660
-      ? (onMobile.current = true)
-      : (onMobile.current = false);
-    onMobile.current
+    caro.current.offsetWidth <= 510 ? (onMobile = true) : (onMobile = false);
+    onMobile
       ? (offset = pcRef.current.offsetWidth * 2)
       : (offset = pcRef.current.offsetWidth * 3);
   };
@@ -33,43 +47,39 @@ function Carousel({ products }) {
     }
   };
 
-  const showOrHideBtns = () => {
-    if (onMobile.current && newX.current >= caro.current.scrollWidth - offset) {
-      setMaxForward(true);
-    } else if (newX.current >= caro.current.scrollWidth - offset - 1) {
-      setMaxForward(true);
-    } else if (newX.current <= 0) {
+  const showOrHideBtns = (maxBackwards, maxForward, swipeDirection) => {
+    if (maxBackwards === true && swipeDirection === "Right") {
+      setMaxBackwards(false);
+    } else if (maxForward === true && swipeDirection === "Left") {
+      setMaxForward(false);
+    } else if (currentX.current <= pcRef.current.offsetWidth * 2) {
       setMaxBackwards(true);
+      setMaxForward(false);
+    } else if (
+      onMobile &&
+      currentX.current >= pcRef.current.offsetWidth * (products.length - 2)
+    ) {
+      setMaxForward(true);
+      setMaxBackwards(false);
+    } else if (!onMobile && currentX.current >= offset * 2) {
+      setMaxForward(true);
+      setMaxBackwards(false);
+    } else {
+      setMaxBackwards(false);
+      setMaxForward(false);
     }
-  };
-
-  const handleCLickForward = () => {
-    setMaxBackwards(false);
-    checkOnMobile();
-    newX.current = caro.current.scrollLeft + offset;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-    showOrHideBtns();
-  };
-
-  const handleClickBackward = () => {
-    setMaxForward(false);
-    checkOnMobile();
-    newX.current = caro.current.scrollLeft - offset;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-    showOrHideBtns();
   };
 
   const handleTouchStart = () => {
     touchStartX = caro.current.scrollLeft;
   };
 
-  const handleTouchEnd = () => {
-    newX.current = caro.current.scrollLeft;
-    touchEndX = newX.current;
-    setSwipeDirection(touchStartX, touchEndX);
-    swipeDirection === "Right" ? setMaxForward(false) : setMaxBackwards(false);
+  const handleTouchEnd = (e) => {
+    currentX.current = e.offsetLeft;
+    touchEndX = caro.current.scrollLeft;
     checkOnMobile();
-    showOrHideBtns();
+    setSwipeDirection(touchStartX, touchEndX);
+    showOrHideBtns(maxBackwards,maxForward,swipeDirection);
   };
 
   return (
@@ -89,7 +99,7 @@ function Carousel({ products }) {
             handleTouchEnd={handleTouchEnd}
             pcRef={pcRef}
             key={item.id}
-            newX={newX}
+            currentX={currentX}
             item={item}
             handleTouchStart={handleTouchStart}
           />

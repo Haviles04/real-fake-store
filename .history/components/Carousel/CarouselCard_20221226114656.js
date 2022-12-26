@@ -22,8 +22,8 @@ function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
       className={styles.productCard}
       key={item.id}
       onTouchStart={() => handleTouchStart()}
-      onTouchEnd={() => {
-        handleTouchEnd();
+      onTouchEnd={(e) => {
+        handleTouchEnd(e.currentTarget);
       }}
     >
       <Link href={`/products/${item.id}`}>

@@ -17,46 +17,44 @@ function Carousel({ products }) {
   let swipeDirection;
 
   const checkOnMobile = () => {
-    window.innerWidth <= 660
-      ? (onMobile.current = true)
-      : (onMobile.current = false);
+    window.innerWidth <= 660 ? (onMobile.current = true) : (onMobile.current = false)
     onMobile.current
       ? (offset = pcRef.current.offsetWidth * 2)
-      : (offset = pcRef.current.offsetWidth * 3);
+      : (offset = pcRef.current.offsetWidth * 3)
   };
 
   const setSwipeDirection = (first, second) => {
     if (first > second) {
-      swipeDirection = "Right";
+      swipeDirection = 'Right';
     } else {
-      swipeDirection = "Left";
+      swipeDirection = 'Left'
     }
   };
 
   const showOrHideBtns = () => {
-    if (onMobile.current && newX.current >= caro.current.scrollWidth - offset) {
+    if(onMobile.current && newX.current >= (caro.current.scrollWidth - offset)){
+      setMaxForward(true)
+    }else if(newX.current >= (caro.current.scrollWidth - offset) - 1){
       setMaxForward(true);
-    } else if (newX.current >= caro.current.scrollWidth - offset - 1) {
-      setMaxForward(true);
-    } else if (newX.current <= 0) {
-      setMaxBackwards(true);
+    } else if(newX.current <= 0){
+      setMaxBackwards(true)
     }
   };
 
   const handleCLickForward = () => {
     setMaxBackwards(false);
     checkOnMobile();
-    newX.current = caro.current.scrollLeft + offset;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
+    newX.current = caro.current.scrollLeft + offset; 
+    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" })
     showOrHideBtns();
   };
 
   const handleClickBackward = () => {
-    setMaxForward(false);
-    checkOnMobile();
-    newX.current = caro.current.scrollLeft - offset;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-    showOrHideBtns();
+    setMaxForward(false)
+    checkOnMobile()
+    newX.current = caro.current.scrollLeft - offset ;
+    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" })
+    showOrHideBtns()
   };
 
   const handleTouchStart = () => {
@@ -67,7 +65,6 @@ function Carousel({ products }) {
     newX.current = caro.current.scrollLeft;
     touchEndX = newX.current;
     setSwipeDirection(touchStartX, touchEndX);
-    swipeDirection === "Right" ? setMaxForward(false) : setMaxBackwards(false);
     checkOnMobile();
     showOrHideBtns();
   };
