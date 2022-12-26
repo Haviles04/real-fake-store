@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
+import { GrCart } from "react-icons/gr";
 import { useState } from "react";
 import styles from "../../styles/carousel.module.css";
 
-function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
+function CarouselCard({ item, pcRef, handleTouch, touchStartX }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
+  let onMobile;
+  let offset;
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -21,9 +24,9 @@ function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
       ref={pcRef}
       className={styles.productCard}
       key={item.id}
-      onTouchStart={(e) => handleTouchStart()}
+      onTouchStart={(e) => {() => touchStartX = e.currentTarget.offsetLeft}}
       onTouchEnd={(e) => {
-        handleTouchEnd(e.currentTarget);
+        handleTouch(e.currentTarget);
       }}
     >
       <Link href={`/products/${item.id}`}>

@@ -21,7 +21,7 @@ function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
       ref={pcRef}
       className={styles.productCard}
       key={item.id}
-      onTouchStart={(e) => handleTouchStart()}
+      onTouchStart={(e) => handleTouchStart(e.currentTarget)}
       onTouchEnd={(e) => {
         handleTouchEnd(e.currentTarget);
       }}

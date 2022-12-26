@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/carousel.module.css";
 
-function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
+function CarouselCard({ item, pcRef, handleTouch, setInitialX}) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
 
   const handleMouseOver = () => {
@@ -21,9 +21,9 @@ function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
       ref={pcRef}
       className={styles.productCard}
       key={item.id}
-      onTouchStart={(e) => handleTouchStart()}
+      onTouchStart={(e) => setInitialX(e)}
       onTouchEnd={(e) => {
-        handleTouchEnd(e.currentTarget);
+        handleTouch(e.currentTarget);
       }}
     >
       <Link href={`/products/${item.id}`}>

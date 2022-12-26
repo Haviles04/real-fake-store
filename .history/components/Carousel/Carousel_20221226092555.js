@@ -39,20 +39,8 @@ function Carousel({ products }) {
       : (offset = pcRef.current.offsetWidth * 3);
   };
 
-  const setSwipeDirection = (first, second) => {
-    if (first > second) {
-      swipeDirection = "Right";
-    } else {
-      swipeDirection = "Left";
-    }
-  };
-
   const showOrHideBtns = () => {
-    if (maxBackwards === true && swipeDirection === "Right") {
-      setMaxBackwards(false);
-    } else if (maxForward === true && swipeDirection === "Left") {
-      setMaxForward(false);
-    } else if (currentX.current <= pcRef.current.offsetWidth * 2) {
+   if (currentX.current <= pcRef.current.offsetWidth * 2) {
       setMaxBackwards(true);
       setMaxForward(false);
     } else if (
@@ -70,17 +58,27 @@ function Carousel({ products }) {
     }
   };
 
-  const handleTouchStart = () => {
-    touchStartX = caro.current.scrollLeft;
-  };
 
-  const handleTouchEnd = (e) => {
-    currentX.current = e.offsetLeft;
-    touchEndX = caro.current.scrollLeft;
+  const setInitialX = (e) => {
+    touchStartX = caro.current.scrollLeft;
+  }
+
+
+  const handleTouch = (e) => {
     checkOnMobile();
+    touchEndX = caro.current.scrollLeft;
     setSwipeDirection(touchStartX, touchEndX);
+    currentX.current = e.offsetLeft;
     showOrHideBtns();
-  };
+  }
+
+  const setSwipeDirection = (first,second) => {
+    if(first > second){
+      swipeDirection = 'Right';
+    } else {
+      swipeDirection = 'Left';
+    }
+  }
 
   return (
     <div className={styles.main}>
@@ -96,12 +94,12 @@ function Carousel({ products }) {
       <div ref={caro} className={styles.mainCaro}>
         {products.map((item) => (
           <CarouselCard
-            handleTouchEnd={handleTouchEnd}
+            handleTouch={handleTouch}
             pcRef={pcRef}
             key={item.id}
             currentX={currentX}
             item={item}
-            handleTouchStart={handleTouchStart}
+            setInitialX={setInitialX}
           />
         ))}
       </div>
