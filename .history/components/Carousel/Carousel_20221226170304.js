@@ -91,18 +91,22 @@ function Carousel({ products }) {
         style={
           maxBackwards
             ? {
-                visibility:'hidden',
-                opacity: 0,
-                transition: "visibility 500ms ease, opacity 500ms ease",
+                visibility:'visible'
               }
             : {
-                visibility:'visible',
-                opacity: 1,
-                transition: "opacity 500ms ease",
+               visibility:'hidden'
               }
         }
       >
-        <AiOutlineArrowLeft size={25} />
+        <AiOutlineArrowLeft size={25} style={maxBackwards
+            ? {
+                opacity: 0,
+                transition: "opacity 500ms linear",
+              }
+            : {
+                opacity: 1,
+                transition: "opacity 500ms linear",
+              }} />
       </button>
       <div ref={caro} className={styles.mainCaro}>
         {products.map((item, i) => (
@@ -123,12 +127,10 @@ function Carousel({ products }) {
         style={
           maxForward
             ? {
-                visibility: 'hidden',
                 opacity: 0,
-                transition:"visibility 500ms ease ,opacity 500ms ease",
+                transition:"opacity 500ms ease",
               }
             : {
-                visibility: 'visible',
                 opacity: 1,
                 transition: "opacity 500ms ease",
               }

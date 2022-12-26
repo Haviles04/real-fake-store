@@ -91,14 +91,13 @@ function Carousel({ products }) {
         style={
           maxBackwards
             ? {
-                visibility:'hidden',
                 opacity: 0,
-                transition: "visibility 500ms ease, opacity 500ms ease",
+                transition: "opacity 500ms linear",
               }
             : {
-                visibility:'visible',
                 opacity: 1,
-                transition: "opacity 500ms ease",
+                transition: "opacity 500ms linear",
+                pointer:"arrow"
               }
         }
       >
@@ -123,12 +122,10 @@ function Carousel({ products }) {
         style={
           maxForward
             ? {
-                visibility: 'hidden',
                 opacity: 0,
-                transition:"visibility 500ms ease ,opacity 500ms ease",
+                transition:"opacity 500ms ease",
               }
             : {
-                visibility: 'visible',
                 opacity: 1,
                 transition: "opacity 500ms ease",
               }

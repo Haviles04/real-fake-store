@@ -93,12 +93,12 @@ function Carousel({ products }) {
             ? {
                 visibility:'hidden',
                 opacity: 0,
-                transition: "visibility 500ms ease, opacity 500ms ease",
+                transition: "opacity 500ms linear",
               }
             : {
                 visibility:'visible',
                 opacity: 1,
-                transition: "opacity 500ms ease",
+                transition: "opacity 500ms linear",
               }
         }
       >
