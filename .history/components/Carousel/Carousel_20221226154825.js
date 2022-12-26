@@ -34,11 +34,11 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-    if (onMobile.current && newX.current >= caro.current.scrollWidth - (offset - (pcRef.current.offsetWidth * .5) ) ){
+    if (onMobile.current && newX.current >= caro.current.scrollWidth - offset) {
       setMaxForward(true);
-    } else if (newX.current >= caro.current.scrollWidth - offset - (pcRef.current.offsetWidth * .5)) {
+    } else if (newX.current >= caro.current.scrollWidth - (offset - (pcRef.current.offsetWidth * 5) )) {
       setMaxForward(true);
-    } else if (newX.current <= (pcRef.current.offsetWidth * .5)) {
+    } else if (newX.current <= 0) {
       setMaxBackwards(true);
     }
   };
@@ -84,9 +84,8 @@ function Carousel({ products }) {
         <AiOutlineArrowLeft size={25} />
       </button>
       <div ref={caro} className={styles.mainCaro}>
-        {products.map((item, i) => (
+        {products.map((item) => (
           <CarouselCard
-            i={i}
             handleTouchEnd={handleTouchEnd}
             pcRef={pcRef}
             key={item.id}

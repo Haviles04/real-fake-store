@@ -64,7 +64,7 @@ function Carousel({ products }) {
   };
 
   const handleTouchEnd = () => {
-    newX.current = caro.current.scrollLeft;
+    newX.current = caro.current.scrollX;
     touchEndX = newX.current;
     setSwipeDirection(touchStartX, touchEndX);
     swipeDirection === "Right" ? setMaxForward(false) : setMaxBackwards(false);
