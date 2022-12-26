@@ -34,11 +34,22 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-    if (onMobile.current && newX.current >= caro.current.scrollWidth - offset) {
+    if (
+      swipeDirection === "Left" &&
+      newX.current >=
+        caro.current.scrollWidth - offset - pcRef.current.offsetWidth
+    ) {
+      setMaxForward(true);
+    } else if (swipeDirection === "Right" && newX.current <= (pcRef.current.offsetWidth * 2)) {
+      setMaxBackwards(false);
+    } else if (
+      onMobile.current &&
+      newX.current >= caro.current.scrollWidth - offset
+    ) {
       setMaxForward(true);
     } else if (newX.current >= caro.current.scrollWidth - offset - 1) {
       setMaxForward(true);
-    } else if (newX.current <= 0) {
+    } else if (newX.current <= pcRef.current.offsetWidth ) {
       setMaxBackwards(true);
     }
   };

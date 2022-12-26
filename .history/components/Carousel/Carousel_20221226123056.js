@@ -38,7 +38,7 @@ function Carousel({ products }) {
       setMaxForward(true);
     } else if (newX.current >= caro.current.scrollWidth - offset - 1) {
       setMaxForward(true);
-    } else if (newX.current <= 0) {
+    } else if (newX.current <= pcRef.current.offsetWidth) {
       setMaxBackwards(true);
     }
   };

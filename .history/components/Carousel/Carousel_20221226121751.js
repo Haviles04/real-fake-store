@@ -34,11 +34,14 @@ function Carousel({ products }) {
   };
 
   const showOrHideBtns = () => {
-    if (onMobile.current && newX.current >= caro.current.scrollWidth - offset) {
+    console.log(swipeDirection);
+    if(swipeDirection === 'Left' &&  newX.current >= (caro.current.scrollWidth - offset) - pcRef.offsetWidth){
+      setMaxForward(true);
+    }else if (onMobile.current && newX.current >= caro.current.scrollWidth - offset) {
       setMaxForward(true);
     } else if (newX.current >= caro.current.scrollWidth - offset - 1) {
       setMaxForward(true);
-    } else if (newX.current <= 0) {
+    } else if (newX.current <= pcRef.current.offsetWidth) {
       setMaxBackwards(true);
     }
   };
