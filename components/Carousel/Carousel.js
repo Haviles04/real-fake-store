@@ -8,128 +8,74 @@ function Carousel({ products }) {
   const caro = useRef();
   const pcRef = useRef();
   const newX = useRef(0);
-  const onMobile = useRef();
-  const [maxForward, setMaxForward] = useState(false);
-  const [maxBackwards, setMaxBackwards] = useState(true);
-  let offset;
-  let touchStartX;
-  let touchEndX;
-  let swipeDirection;
-  let productCardWidth;
+  const [isLast, setIsLast] = useState(false);
+  const [isFirst, setIsFirst] = useState(true);
+  const scrollCards = useRef(4);
+  let scrollTimeout;
 
-  const checkOnMobile = () => {
-    productCardWidth = pcRef.current.getBoundingClientRect().width;
-    window.innerWidth <= 660
-      ? (onMobile.current = true)
-      : (onMobile.current = false);
-    onMobile.current
-      ? (offset = productCardWidth * 2)
-      : (offset = productCardWidth * 4);
-  };
-
-  const setSwipeDirection = (first, second) => {
-    if (first > second) {
-      swipeDirection = "Right";
-    } else {
-      swipeDirection = "Left";
-    }
+  const checkIsMobile = () => {
+    scrollCards.current = window.innerWidth <= 660 ? 2 : 4;
   };
 
   const showOrHideBtns = () => {
-    if (
-      onMobile.current &&
-      newX.current >=
-        caro.current.scrollWidth - (offset - productCardWidth * 0.5)
-    ) {
-      setMaxForward(true);
-    } else if (
-      newX.current >=
-      caro.current.scrollWidth - offset - productCardWidth * 0.5
-    ) {
-      setMaxForward(true);
-    } else if (newX.current <= productCardWidth * 0.5) {
-      setMaxBackwards(true);
-    }
+    const scrollOffset = caro.current.scrollLeft + caro.current.offsetWidth;
+    const carouselWidth = caro.current.scrollWidth;
+    
+    setIsFirst(caro.current.scrollLeft === 0);
+    setIsLast(scrollOffset === carouselWidth);
   };
 
   const handleCLickForward = () => {
-    setMaxBackwards(false);
-    checkOnMobile();
-    newX.current = caro.current.scrollLeft + offset;
+    newX.current = caro.current.scrollLeft + (pcRef.current.getBoundingClientRect().width * scrollCards.current);
     caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-    showOrHideBtns();
   };
 
   const handleClickBackward = () => {
-    setMaxForward(false);
-    checkOnMobile();
-    newX.current = caro.current.scrollLeft - offset;
+    newX.current = caro.current.scrollLeft - (pcRef.current.getBoundingClientRect().width * scrollCards.current);
     caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-    showOrHideBtns();
   };
 
-  const handleTouchStart = () => {
-    touchStartX = caro.current.scrollLeft;
-  };
-
-  const handleTouchEnd = () => {
-    setTimeout(() => {
-      newX.current = caro.current.scrollLeft;
-      touchEndX = newX.current;
-      setSwipeDirection(touchStartX, touchEndX);
-      swipeDirection === "Right"
-        ? setMaxForward(false)
-        : setMaxBackwards(false);
-      checkOnMobile();
+  const handleScroll = (e) => {
+    clearTimeout(scrollTimeout);
+    // only fire on the last scroll event
+    scrollTimeout = setTimeout(() => {
       showOrHideBtns();
-    }, 500);
-  };
+    }, 250);
+  }
+
+  useEffect(() => {
+    checkIsMobile();
+  }, []);
 
   return (
     <div className={styles.main}>
       <button
         onClick={() => handleClickBackward()}
-        className={styles.buttons + " " + styles.button1}
+        className={styles.buttons + " " + styles.next}
         style={
-          maxBackwards
-            ? {
-                opacity: 0,
-                transition: "opacity 500ms ease",
-              }
-            : {
-                opacity: 1,
-                transition: "opacity 500ms ease",
-              }
+           { opacity: isFirst ? 0 : 1 }
         }
       >
         <AiOutlineArrowLeft size={25} />
       </button>
-      <div ref={caro} className={styles.mainCaro}>
+
+      <div ref={caro} className={styles.mainCaro} onScroll={handleScroll}>
         {products.map((item, i) => (
           <CarouselCard
             i={i}
-            handleTouchEnd={handleTouchEnd}
             pcRef={pcRef}
             key={item.id}
             newX={newX}
             item={item}
-            handleTouchStart={handleTouchStart}
           />
         ))}
       </div>
+
       <button
         onClick={() => handleCLickForward()}
-        className={styles.buttons + " " + styles.button2}
+        className={styles.buttons + " " + styles.previous}
         style={
-          maxForward
-            ? {
-                opacity: 0,
-                transition: "opacity 500ms ease",
-              }
-            : {
-                opacity: 1,
-                transition: "opacity 500ms ease",
-              }
+          { opacity: isLast ? 0 : 1 }
         }
       >
         <AiOutlineArrowRight size={25} />
