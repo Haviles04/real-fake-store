@@ -92,21 +92,23 @@
 
     }
   
-    .buttons{
+    .buttons {
         position: absolute;
+        z-index: 2;
         height: 5%;
         width: 10%;
         padding: 0;
+        margin: 0 10px;
         background-color: rgba(128, 128, 128, 0.479);
         border-radius: 25%;
+        transition: opacity 500ms ease;
     }   
     
-    .button1{
-        left: 1%;
-        z-index: 2;
+    .next {
+      left: 0;
     }
-    .button2{
-        left: 87%;
+    .previous {
+      right: 0;
     }
 
 }
