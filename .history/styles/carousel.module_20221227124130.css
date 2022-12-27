@@ -45,7 +45,7 @@
     flex-shrink: 0;
     width: 25%;
     height: 100%;
-    padding: 5px;
+    padding: 1%;
     scroll-snap-align: start;
     scroll-snap-type: x mandatory;
 }

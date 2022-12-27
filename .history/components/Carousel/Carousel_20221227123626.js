@@ -6,7 +6,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 
 function Carousel({ products }) {
   const caro = useRef();
-  const pcRef = useRef();
+  const pcRef = useRef(pcRef.current.getBoundingClientRect().width);
   const newX = useRef(0);
   const onMobile = useRef();
   const [maxForward, setMaxForward] = useState(false);
@@ -15,16 +15,14 @@ function Carousel({ products }) {
   let touchStartX;
   let touchEndX;
   let swipeDirection;
-  let productCardWidth;
 
   const checkOnMobile = () => {
-    productCardWidth = pcRef.current.getBoundingClientRect().width;
     window.innerWidth <= 660
       ? (onMobile.current = true)
       : (onMobile.current = false);
     onMobile.current
-      ? (offset = productCardWidth * 2)
-      : (offset = productCardWidth * 4);
+      ? (offset = pcRef.current.getBoundingClientRect().width * 2)
+      : (offset = pcRef.current.getBoundingClientRect().width * 4);
   };
 
   const setSwipeDirection = (first, second) => {
@@ -39,15 +37,15 @@ function Carousel({ products }) {
     if (
       onMobile.current &&
       newX.current >=
-        caro.current.scrollWidth - (offset - productCardWidth * 0.5)
+        caro.current.scrollWidth - (offset - pcRef.current.getBoundingClientRect().width * 0.5)
     ) {
       setMaxForward(true);
     } else if (
       newX.current >=
-      caro.current.scrollWidth - offset - productCardWidth * 0.5
+      caro.current.scrollWidth - offset - pcRef.current.getBoundingClientRect().width * 0.5
     ) {
       setMaxForward(true);
-    } else if (newX.current <= productCardWidth * 0.5) {
+    } else if (newX.current <= pcRef.current.getBoundingClientRect().width * 0.5) {
       setMaxBackwards(true);
     }
   };

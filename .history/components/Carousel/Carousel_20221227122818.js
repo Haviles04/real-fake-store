@@ -15,16 +15,14 @@ function Carousel({ products }) {
   let touchStartX;
   let touchEndX;
   let swipeDirection;
-  let productCardWidth;
 
   const checkOnMobile = () => {
-    productCardWidth = pcRef.current.getBoundingClientRect().width;
     window.innerWidth <= 660
       ? (onMobile.current = true)
       : (onMobile.current = false);
     onMobile.current
-      ? (offset = productCardWidth * 2)
-      : (offset = productCardWidth * 4);
+      ? (offset = pcRef.current.offsetWidth * 2)
+      : (offset = pcRef.current.offsetWidth * 4);
   };
 
   const setSwipeDirection = (first, second) => {
@@ -39,21 +37,21 @@ function Carousel({ products }) {
     if (
       onMobile.current &&
       newX.current >=
-        caro.current.scrollWidth - (offset - productCardWidth * 0.5)
+        caro.current.scrollWidth - (offset - pcRef.current.offsetWidth * 0.5)
     ) {
       setMaxForward(true);
     } else if (
       newX.current >=
-      caro.current.scrollWidth - offset - productCardWidth * 0.5
+      caro.current.scrollWidth - offset - pcRef.current.offsetWidth * 0.5
     ) {
       setMaxForward(true);
-    } else if (newX.current <= productCardWidth * 0.5) {
+    } else if (newX.current <= pcRef.current.offsetWidth * 0.5) {
       setMaxBackwards(true);
     }
   };
 
   const handleCLickForward = () => {
-    console.log()
+    console.log(caro.current.offsetWidth)
     setMaxBackwards(false);
     checkOnMobile();
     newX.current = caro.current.scrollLeft + offset;

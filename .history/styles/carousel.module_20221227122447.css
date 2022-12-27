@@ -24,7 +24,7 @@
 }
 
 .productImage{
-    width:100%;
+    width:98%;
     height: auto;
 }
 
@@ -45,7 +45,6 @@
     flex-shrink: 0;
     width: 25%;
     height: 100%;
-    padding: 5px;
     scroll-snap-align: start;
     scroll-snap-type: x mandatory;
 }
@@ -53,7 +52,7 @@
 .productTitle{
     margin: 0;
     padding-left: 5px;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
 }
 
 .text{
@@ -79,7 +78,7 @@
         width: 100%;
         height: auto;
         overflow-x: scroll;
-        scroll-snap-type: x mandatory;
+        
     }
 
     .mainCaro::-webkit-scrollbar{
@@ -89,7 +88,6 @@
 
     .productCard{
         width: 50%;
-
     }
   
     .buttons{
