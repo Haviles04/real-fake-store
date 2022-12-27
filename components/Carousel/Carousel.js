@@ -26,12 +26,12 @@ function Carousel({ products }) {
   };
 
   const handleCLickForward = () => {
-    newX.current = caro.current.scrollLeft + (pcRef.current.offsetWidth * scrollCards.current);
+    newX.current = caro.current.scrollLeft + (pcRef.current.getBoundingClientRect().width * scrollCards.current);
     caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
   };
 
   const handleClickBackward = () => {
-    newX.current = caro.current.scrollLeft - (pcRef.current.offsetWidth * scrollCards.current);
+    newX.current = caro.current.scrollLeft - (pcRef.current.getBoundingClientRect().width * scrollCards.current);
     caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
   };
 
