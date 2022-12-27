@@ -3,7 +3,6 @@ import Image from "next/image";
 import Meta from "../../components/Meta";
 import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
-import { server } from '../../config/index'
 
 export default function Products({ pageProduct }) {
   const product = pageProduct[0];
@@ -66,7 +65,7 @@ export default function Products({ pageProduct }) {
 
 export async function getStaticPaths() {
   const products = await fetch(
-    `${server}/api/category/all`
+    "https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts"
   ).then((r) => r.json());
   return {
     paths: products.map((item) => {
@@ -83,7 +82,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const allproducts = await fetch(
-    `${server}/api/category/all`
+    "https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts"
   ).then((r) => r.json());
 
   const pageProduct = allproducts.filter(

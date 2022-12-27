@@ -1,7 +1,6 @@
 import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
-import { server } from "../../config";
 
 export default function Category({ categoryItems }) {
   const pageTitle = categoryItems.length
@@ -24,7 +23,7 @@ export default function Category({ categoryItems }) {
 
 export async function getStaticPaths() {
   const cats = await fetch(
-    `${server}/api/category`
+    "http://localhost:3000/api/category"
   ).then((r) => r.json());
   return {
     paths: cats.map((item) => {
@@ -41,7 +40,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const categoryItems = await fetch(
-    `${server}/api/category/${params.catId}`
+    `http://localhost:3000/api/category/${params.catId}`
   ).then((r) => r.json());
 
   return {
