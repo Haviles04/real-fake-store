@@ -53,6 +53,7 @@ function Carousel({ products }) {
   };
 
   const handleCLickForward = () => {
+    console.log();
     setMaxBackwards(false);
     checkOnMobile();
     newX.current = caro.current.scrollLeft + offset;
