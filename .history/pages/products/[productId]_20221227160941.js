@@ -29,7 +29,12 @@ export default function Products({ pageProduct }) {
   
   const handleClick = (e) => {
     e.preventDefault()
-    updateCart(product);
+    updateCart(
+      {name: product.name,
+       image: product.images[0],
+       price: product.price,
+      }
+      );
   }
 
 

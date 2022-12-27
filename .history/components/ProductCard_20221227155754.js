@@ -1,13 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/productCard.module.css";
 import { GrCart } from "react-icons/gr";
-import { useCartUpdate } from "../customCartHook/CartContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
-  const updateCart = useCartUpdate();
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -19,13 +16,13 @@ function ProductCard({ item }) {
 
   const handleClick = (e) => {
     e.preventDefault()
-    updateCart(item);
+    updateCart(product);
   }
 
   return (
     <div className={styles.productCard} key={item.id}>
       <Link href={`/products/${item.id}`}>
-        <Image
+        <img
           className={styles.productImage}
           onMouseOver={() => {
             handleMouseOver();
@@ -37,7 +34,7 @@ function ProductCard({ item }) {
           width={200}
           height={200}
           alt={item.title}
-        ></Image>
+        ></img>
         <h4 className={styles.productTitle}>{item.title}</h4>
         </Link>
         <p className={styles.text}>${item.price}</p>

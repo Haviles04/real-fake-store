@@ -9,6 +9,8 @@ import { useCart } from "../../customCartHook/CartContextProvider";
 
 function Navbar({ cats }) {
   const cart=useCart();
+  console.log(cart.length)
+  
   return (
     <div className={styles.mainBar}>
       <Link href="/">
@@ -25,7 +27,7 @@ function Navbar({ cats }) {
           </button>
         </form>
         <Link className={styles.cartText} href="/">
-          Cart ({cart.length})
+          `Cart ${cart.length}`
         </Link>
         <Link className={styles.cartText} href="/">
           Favorites

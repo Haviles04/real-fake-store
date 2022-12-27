@@ -25,7 +25,7 @@ function Navbar({ cats }) {
           </button>
         </form>
         <Link className={styles.cartText} href="/">
-          Cart ({cart.length})
+          Cart {cart.length}
         </Link>
         <Link className={styles.cartText} href="/">
           Favorites

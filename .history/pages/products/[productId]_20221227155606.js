@@ -8,7 +8,6 @@ import { useCart } from "../../customCartHook/CartContextProvider";
 import { useCartUpdate } from "../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
-  const updateCart = useCartUpdate();
   const product = pageProduct[0];
   const [bigImage, setBigImage] = useState(product.images[0]);
   const [secondImage, setSecondImage] = useState(product.images[1]);
@@ -26,7 +25,9 @@ export default function Products({ pageProduct }) {
     }
   };
 
-  
+  const updateCart = useCartUpdate();
+
+
   const handleClick = (e) => {
     e.preventDefault()
     updateCart(product);

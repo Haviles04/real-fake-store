@@ -27,6 +27,8 @@ export default function Products({ pageProduct }) {
   };
 
   
+
+
   const handleClick = (e) => {
     e.preventDefault()
     updateCart(product);

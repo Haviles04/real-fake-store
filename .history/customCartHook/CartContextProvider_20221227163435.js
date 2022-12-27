@@ -1,0 +1,41 @@
+import react from "react";
+import { useState, createContext, useContext } from "react";
+
+const CartContext = createContext();
+
+const CartUpdateContext = createContext();
+
+export function useCart(){
+  return useContext(CartContext)
+}
+
+export function useCartUpdate(){
+  return useContext(CartUpdateContext)
+}
+
+
+export function CartContextProvider({ children }) {
+  const [cart, setCart] = useState([]);
+
+  const updateCart = (product) => {
+    cart.length === 0 ? setCart([...cart, product]) :
+    
+    for(items in cart){
+      if(product.id = cart[item].id){
+        cart[item].qty ++;
+      }else{
+        setCart([...cart, product])
+      }
+    };
+    
+   
+  }
+
+  return (
+    <CartContext.Provider value={cart}>
+      <CartUpdateContext.Provider value={updateCart}>
+        {children}
+      </CartUpdateContext.Provider>
+    </CartContext.Provider>
+  );
+}

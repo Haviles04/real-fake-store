@@ -4,11 +4,8 @@ import Meta from "../../components/Meta";
 import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
 import { server } from '../../config/index'
-import { useCart } from "../../customCartHook/CartContextProvider";
-import { useCartUpdate } from "../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
-  const updateCart = useCartUpdate();
   const product = pageProduct[0];
   const [bigImage, setBigImage] = useState(product.images[0]);
   const [secondImage, setSecondImage] = useState(product.images[1]);
@@ -25,13 +22,6 @@ export default function Products({ pageProduct }) {
       setThirdImage(filler);
     }
   };
-
-  
-  const handleClick = (e) => {
-    e.preventDefault()
-    updateCart(product);
-  }
-
 
   return (
     <div>
@@ -64,7 +54,7 @@ export default function Products({ pageProduct }) {
           <p>{product.description}</p>
         </div>
         <form>
-          <button onClick={(e) => handleClick(e)} className={styles.cartButton}>
+          <button type="submit" className={styles.cartButton}>
             <GrCart className={styles.cartIcon} size={20} />
             <span className={styles.btnText}>Add to cart!</span>
           </button>
