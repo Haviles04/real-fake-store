@@ -50,7 +50,8 @@ function Carousel({ products }) {
     }
   };
 
-  const handleCLickForward = () => {
+  const handleCLickForward = (e) => {
+    e.preventDefault();
     setMaxBackwards(false);
     checkOnMobile();
     newX.current = caro.current.scrollLeft + offset;
@@ -86,17 +87,17 @@ function Carousel({ products }) {
   return (
     <div className={styles.main}>
       <button
-        onClick={() => handleClickBackward()}
+        onClick={(e) => handleClickBackward()}
         className={styles.buttons + " " + styles.button1}
         style={
           maxBackwards
             ? {
-                
+                visibility:'hidden',
                 opacity: 0,
-                transition: "opacity 500ms ease",
+                transition: "visibility 500ms ease, opacity 500ms ease",
               }
             : {
-                
+                visibility:'visible',
                 opacity: 1,
                 transition: "opacity 500ms ease",
               }
@@ -118,17 +119,17 @@ function Carousel({ products }) {
         ))}
       </div>
       <button
-        onClick={() => handleCLickForward()}
+        onClick={(e) => handleCLickForward(e)}
         className={styles.buttons + " " + styles.button2}
         style={
           maxForward
             ? {
-                
+                visibility: 'hidden',
                 opacity: 0,
-                transition:"opacity 500ms ease",
+                transition:"visibility 500ms ease ,opacity 500ms ease",
               }
             : {
-                
+                visibility: 'visible',
                 opacity: 1,
                 transition: "opacity 500ms ease",
               }

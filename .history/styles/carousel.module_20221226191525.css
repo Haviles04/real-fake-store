@@ -9,12 +9,9 @@
 
 .mainCaro{
     width: 50%;
-    height: auto;
+    height: fit-content;
     max-width: 930px;
-    display: flex;
-    flex-direction: row;
-    gap: 1%;
-    align-items: center;
+  
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -42,6 +39,7 @@
 .productCard{
     position: relative;
     box-sizing: border-box;
+    padding: 1%;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;

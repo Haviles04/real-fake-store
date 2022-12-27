@@ -9,11 +9,10 @@
 
 .mainCaro{
     width: 50%;
-    height: auto;
+    height: fit-content;
     max-width: 930px;
     display: flex;
     flex-direction: row;
-    gap: 1%;
     align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
