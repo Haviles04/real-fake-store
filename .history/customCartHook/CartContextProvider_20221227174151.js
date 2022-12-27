@@ -21,8 +21,11 @@ export function CartContextProvider({ children }) {
 
   
   const updateCart = (product) => {
-   const index = cart.map(item => item.id).indexOf(product.id);
-   index === -1 ? setCart([...cart, product]) : cart[index].qty ++;
+    while(!cart.includes(product)){
+      setCart([...cart, product]);
+    }
+
+
   };
 
   return (

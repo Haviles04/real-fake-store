@@ -5,25 +5,24 @@ const CartContext = createContext();
 
 const CartUpdateContext = createContext();
 
-export function useCart() {
-  return useContext(CartContext);
+export function useCart(){
+  return useContext(CartContext)
 }
 
-export function useCartUpdate() {
-  return useContext(CartUpdateContext);
+export function useCartUpdate(){
+  return useContext(CartUpdateContext)
 }
-
 
 
 export function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
-  let index;
 
-  
   const updateCart = (product) => {
-   const index = cart.map(item => item.id).indexOf(product.id);
-   index === -1 ? setCart([...cart, product]) : cart[index].qty ++;
-  };
+    cart.includes(product) 
+    ? product.qty ++ 
+    : setCart([...cart, product]);
+};
+  }
 
   return (
     <CartContext.Provider value={cart}>

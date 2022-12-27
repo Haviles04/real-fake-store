@@ -14,15 +14,16 @@ export function useCartUpdate() {
 }
 
 
-
+setCart([...cart, product]);
 export function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
   let index;
 
   
   const updateCart = (product) => {
-   const index = cart.map(item => item.id).indexOf(product.id);
-   index === -1 ? setCart([...cart, product]) : cart[index].qty ++;
+   const index = cart.indexOf(product);
+   console.log(index);
+
   };
 
   return (

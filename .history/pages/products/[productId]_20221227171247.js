@@ -4,6 +4,7 @@ import Meta from "../../components/Meta";
 import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
 import { server } from '../../config/index'
+import { useCart } from "../../customCartHook/CartContextProvider";
 import { useCartUpdate } from "../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
