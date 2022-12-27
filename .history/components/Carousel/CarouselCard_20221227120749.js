@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/carousel.module.css";
 
@@ -26,7 +27,7 @@ function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
       }}
     >
       <Link href={`/products/${item.id}`}>
-        <img
+        <Image
           className={styles.productImage}
           onMouseOver={() => {
             handleMouseOver();
@@ -36,7 +37,8 @@ function CarouselCard({ item, pcRef, handleTouchEnd, handleTouchStart}) {
           }}
           src={`${hoverPic}`}
           alt={item.title}
-        ></img>
+          width={'100%'}
+        ></Image>
         <h4 className={styles.productTitle}>{item.title}</h4>
       </Link>
       <p className={styles.text}>${item.price}</p>
