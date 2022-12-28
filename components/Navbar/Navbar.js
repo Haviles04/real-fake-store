@@ -24,7 +24,7 @@ function Navbar({ cats }) {
             <FiSearch />
           </button>
         </form>
-        <Link className={styles.cartText} href="/category/cart">
+        <Link className={styles.cartText} href="/cart">
           Cart ({cart.length})
         </Link>
         <Link className={styles.cartText} href="/">

@@ -13,14 +13,10 @@ export function useCartUpdate() {
   return useContext(CartUpdateContext);
 }
 
-
-
 export function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
-  let index;
-
   
-  const updateCart = (product) => {
+  const addToCart = (product) => {
     const existingItem = cart.find((cartItem) => cartItem.id === product.id);
     if(existingItem) {
       existingItem.qty ++
@@ -29,9 +25,13 @@ export function CartContextProvider({ children }) {
     setCart([...cart, product]);
   };
 
+  const removeFromCart = (product) => {
+    setCart([...cart].filter(item =>  item.id !== product.id))
+  }
+
   return (
     <CartContext.Provider value={cart}>
-      <CartUpdateContext.Provider value={updateCart}>
+      <CartUpdateContext.Provider value={{addToCart, removeFromCart}}>
         {children}
       </CartUpdateContext.Provider>
     </CartContext.Provider>

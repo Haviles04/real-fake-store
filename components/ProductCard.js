@@ -7,7 +7,7 @@ import { useCartUpdate } from "../customCartHook/CartContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
-  const updateCart = useCartUpdate();
+  const {addToCart} = useCartUpdate();
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -17,9 +17,11 @@ function ProductCard({ item }) {
     item.images[0] ? setHoverPic(item.images[0]) : null;
   };
 
+
+
   const handleClick = (e) => {
     e.preventDefault()
-    updateCart({
+    addToCart({
       name: item.title,
       id: item.id,
       image: item.images[0],
