@@ -8,7 +8,7 @@ import NavLinks from "./NavLinks";
 import { useCart } from "../../customCartHook/CartContextProvider";
 
 function Navbar({ cats }) {
-  const cart=useCart();
+  const cart=useCart(); 
   return (
     <div className={styles.mainBar}>
       <Link href="/">

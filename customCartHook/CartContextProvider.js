@@ -25,13 +25,20 @@ export function CartContextProvider({ children }) {
     setCart([...cart, product]);
   };
 
+  const updateCart = (product, quatity) => {
+    const currentItem = cart.find((cartItem) => cartItem.id === product.id)
+    if(currentItem){
+      currentItem.qty = quatity;
+    }
+  }
+
   const removeFromCart = (product) => {
     setCart([...cart].filter(item =>  item.id !== product.id))
   }
 
   return (
     <CartContext.Provider value={cart}>
-      <CartUpdateContext.Provider value={{addToCart, removeFromCart}}>
+      <CartUpdateContext.Provider value={{addToCart, removeFromCart, updateCart}}>
         {children}
       </CartUpdateContext.Provider>
     </CartContext.Provider>
