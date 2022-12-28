@@ -9,10 +9,18 @@ export default function Cart() {
   return (
     <div className={styles.container}>
       <div className={styles.cartContainer}>
-        Cart
+        <h1>Shopping Cart</h1>
+        <table>
+          <thead>
+            <th id='Item description'>Item description</th>
+            <th id='quantity'>Quantity</th>
+            <th id='price'>Price</th>
+            <th id='total'>Total</th>
+          </thead>
         {cartItems.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
+        </table>
       </div>
     </div>
   );
