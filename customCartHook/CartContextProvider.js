@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useReducer } from "react";
 import { useState, createContext, useContext } from "react";
 
 const CartContext = createContext();
@@ -14,33 +14,35 @@ export function useCartUpdate() {
 }
 
 export function CartContextProvider({ children }) {
-  const [cart, setCart] = useState([]);
-  
-  const addToCart = (product) => {
-    const existingItem = cart.find((cartItem) => cartItem.id === product.id);
-    if(existingItem) {
-      existingItem.qty ++
-      return
+  const [cart, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case "addToCart":
+        const existingItem = state.find(
+          (cartItem) => cartItem.id === action.payload.id
+        );
+        if (existingItem) {
+          existingItem.qty++;
+          return;
+        }
+        return [...state, action.payload];
+      case "updateQty":
+        const currentItem = state.find(
+          (cartItem) => cartItem.id === action.payload.id
+        );
+        if (currentItem) {
+          currentItem.qty = action.payload.qty;
+        }
+        return state;
+      case "removeFromCart":
+        return [...state].filter((item) => item.id !== action.payload.id);
+      default:
+        return state;
     }
-    setCart([...cart, product]);
-  };
-
-  const updateCart = (product, quatity) => {
-    const currentItem = cart.find((cartItem) => cartItem.id === product.id)
-    if(currentItem){
-      currentItem.qty = quatity;
-    }
-  }
-
-  const removeFromCart = (product) => {
-    setCart([...cart].filter(item =>  item.id !== product.id))
-  }
+  }, []);
 
   return (
-    <CartContext.Provider value={cart}>
-      <CartUpdateContext.Provider value={{addToCart, removeFromCart, updateCart}}>
-        {children}
-      </CartUpdateContext.Provider>
+    <CartContext.Provider value={{ cart, dispatch }}>
+      {children}
     </CartContext.Provider>
   );
 }
