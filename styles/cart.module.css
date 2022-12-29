@@ -7,6 +7,14 @@
 }
 
 
+.container th {
+    border-bottom: 1px solid rgb(189, 189, 189);
+  }
+
+.container td{
+    border-bottom: 1px solid rgb(189, 189, 189);
+}
+
 .cartContainer{
     width: 75%;
     display: flex;
@@ -15,13 +23,14 @@
     align-items: center;
 }
 
+
 .cartContainer table{
     width: 75%;
+    border-collapse: collapse;
 }
 
 .cartContainer th {
     padding-bottom: 5px;
-    border-bottom: 2px solid rgb(231, 231, 231);
 }
 
 .cartItemContainer{

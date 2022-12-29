@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/productCard.module.css";
 import { GrCart } from "react-icons/gr";
-import { useCartUpdate } from "../customCartHook/CartContextProvider";
+import { useCart } from "../customCartHook/CartContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
-  const {addToCart} = useCartUpdate();
+  const {dispatch} = useCart();
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -21,13 +21,13 @@ function ProductCard({ item }) {
 
   const handleClick = (e) => {
     e.preventDefault()
-    addToCart({
+    dispatch({type: 'addToCart', payload:{
       name: item.title,
       id: item.id,
       image: item.images[0],
       price: item.price,
       qty: 1
-    });
+    }});
   }
 
   return (
