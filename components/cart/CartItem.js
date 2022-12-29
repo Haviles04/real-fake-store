@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useRef, useState } from "react";
-import { useCart } from "../customCartHook/CartContextProvider";
-import styles from "../styles/cart.module.css";
+import { useCart } from "../../customCartHook/CartContextProvider";
+import styles from "../../styles/cart.module.css";
 
 function CartItem({ item }) {
   const { cart, dispatch } = useCart();
