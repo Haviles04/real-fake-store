@@ -10,7 +10,7 @@ export default function Cart() {
   return (
     <div className={styles.container}>
       <div className={styles.cartContainer}>
-        {cart.length ? (
+        {cart.items.length ? (
           <>
             <h1>Shopping Cart</h1>
             <table>
@@ -22,7 +22,7 @@ export default function Cart() {
                   <th id="total">Total</th>
                 </tr>
               </thead>
-              {cart.map((item) => (
+              {cart.items.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}
             </table>

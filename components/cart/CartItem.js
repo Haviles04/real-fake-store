@@ -11,7 +11,7 @@ function CartItem({ item }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch({type: 'removeFromCart', payload: { id: item.id }});
+    dispatch({type: 'removeFromCart', payload: { id: item.id, qty: item.qty }});
   };
 
   const handleChange = (e) => {
