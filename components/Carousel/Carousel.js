@@ -20,18 +20,22 @@ function Carousel({ products }) {
   const showOrHideBtns = () => {
     const scrollOffset = caro.current.scrollLeft + caro.current.offsetWidth;
     const carouselWidth = caro.current.scrollWidth;
-    
+
     setIsFirst(caro.current.scrollLeft === 0);
     setIsLast(scrollOffset === carouselWidth);
   };
 
   const handleCLickForward = () => {
-    newX.current = caro.current.scrollLeft + (pcRef.current.getBoundingClientRect().width * scrollCards.current);
+    newX.current =
+      caro.current.scrollLeft +
+      pcRef.current.getBoundingClientRect().width * scrollCards.current;
     caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
   };
 
   const handleClickBackward = () => {
-    newX.current = caro.current.scrollLeft - (pcRef.current.getBoundingClientRect().width * scrollCards.current);
+    newX.current =
+      caro.current.scrollLeft -
+      pcRef.current.getBoundingClientRect().width * scrollCards.current;
     caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
   };
 
@@ -41,7 +45,7 @@ function Carousel({ products }) {
     scrollTimeout = setTimeout(() => {
       showOrHideBtns();
     }, 250);
-  }
+  };
 
   useEffect(() => {
     checkIsMobile();
@@ -52,9 +56,7 @@ function Carousel({ products }) {
       <button
         onClick={() => handleClickBackward()}
         className={styles.buttons + " " + styles.next}
-        style={
-           { opacity: isFirst ? 0 : 1 }
-        }
+        style={{ opacity: isFirst ? 0 : 1 }}
       >
         <AiOutlineArrowLeft size={25} />
       </button>
@@ -74,9 +76,7 @@ function Carousel({ products }) {
       <button
         onClick={() => handleCLickForward()}
         className={styles.buttons + " " + styles.previous}
-        style={
-          { opacity: isLast ? 0 : 1 }
-        }
+        style={{ opacity: isLast ? 0 : 1 }}
       >
         <AiOutlineArrowRight size={25} />
       </button>

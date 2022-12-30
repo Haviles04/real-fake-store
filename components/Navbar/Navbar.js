@@ -1,4 +1,4 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/navbar.module.css";
@@ -8,7 +8,7 @@ import NavLinks from "./NavLinks";
 import { useCart } from "../../customCartHook/CartContextProvider";
 
 function Navbar({ cats }) {
-  const {cart} = useCart();
+  const { cart } = useCart();
   return (
     <div className={styles.mainBar}>
       <Link href="/">

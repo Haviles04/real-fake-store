@@ -13,7 +13,12 @@ function MobileNavbar({ cats }) {
     <>
       <div className={styles.mobileBar}>
         <Link href="/">
-          <Image onClick={() => setMenuIsOpen(false)} className={styles.logo} src={logo} alt="logo" />
+          <Image
+            onClick={() => setMenuIsOpen(false)}
+            className={styles.logo}
+            src={logo}
+            alt="logo"
+          />
         </Link>
         <GiHamburgerMenu
           onClick={() => setMenuIsOpen(!menuIsOpen)}

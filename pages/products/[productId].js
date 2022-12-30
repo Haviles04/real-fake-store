@@ -3,11 +3,11 @@ import Image from "next/image";
 import Meta from "../../components/Meta";
 import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
-import { server } from '../../config/index'
+import { server } from "../../config/index";
 import { useCart } from "../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
-  const {dispatch} = useCart();
+  const { dispatch } = useCart();
   const product = pageProduct[0];
   const [bigImage, setBigImage] = useState(product.images[0]);
   const [secondImage, setSecondImage] = useState(product.images[1]);
@@ -25,18 +25,19 @@ export default function Products({ pageProduct }) {
     }
   };
 
-  
   const handleClick = (e) => {
-    e.preventDefault()
-    dispatch({type: 'addToCart', payload:{
-      name: product.title,
-      id: product.id,
-      image: product.images[0],
-      price: product.price,
-      qty: 1
-    }});
-  }
-
+    e.preventDefault();
+    dispatch({
+      type: "addToCart",
+      payload: {
+        name: product.title,
+        id: product.id,
+        image: product.images[0],
+        price: product.price,
+        qty: 1,
+      },
+    });
+  };
 
   return (
     <div>
@@ -46,7 +47,13 @@ export default function Products({ pageProduct }) {
           <h1>{product.title}</h1>
           <div className={styles.productContainer}>
             <div className={styles.zoomContainer}>
-              <Image className={styles.bigImage} src={bigImage} alt={product.title} width={640} height={480} />
+              <Image
+                className={styles.bigImage}
+                src={bigImage}
+                alt={product.title}
+                width={640}
+                height={480}
+              />
             </div>
             <div className={styles.smallImageContainer}>
               <Image
@@ -54,14 +61,16 @@ export default function Products({ pageProduct }) {
                 onClick={() => swapImages("second")}
                 src={secondImage}
                 alt={product.title}
-                width={640} height={480}
+                width={640}
+                height={480}
               />
               <Image
                 onClick={() => swapImages("third")}
                 className={styles.imageThree}
                 src={thirdImage}
                 alt={product.title}
-                width={640} height={480}
+                width={640}
+                height={480}
               />
             </div>
           </div>
@@ -80,9 +89,9 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const products = await fetch(
-    `${server}/api/category/all`
-  ).then((r) => r.json());
+  const products = await fetch(`${server}/api/category/all`).then((r) =>
+    r.json()
+  );
   return {
     paths: products.map((item) => {
       const productId = item.id.toString();
@@ -97,9 +106,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const allproducts = await fetch(
-    `${server}/api/category/all`
-  ).then((r) => r.json());
+  const allproducts = await fetch(`${server}/api/category/all`).then((r) =>
+    r.json()
+  );
 
   const pageProduct = allproducts.filter(
     (item) => item.id === parseInt(params.productId)

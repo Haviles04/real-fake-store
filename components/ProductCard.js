@@ -7,7 +7,7 @@ import { useCart } from "../customCartHook/CartContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
-  const {dispatch} = useCart();
+  const { dispatch } = useCart();
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -17,18 +17,19 @@ function ProductCard({ item }) {
     item.images[0] ? setHoverPic(item.images[0]) : null;
   };
 
-
-
   const handleClick = (e) => {
-    e.preventDefault()
-    dispatch({type: 'addToCart', payload:{
-      name: item.title,
-      id: item.id,
-      image: item.images[0],
-      price: item.price,
-      qty: 1
-    }});
-  }
+    e.preventDefault();
+    dispatch({
+      type: "addToCart",
+      payload: {
+        name: item.title,
+        id: item.id,
+        image: item.images[0],
+        price: item.price,
+        qty: 1,
+      },
+    });
+  };
 
   return (
     <div className={styles.productCard} key={item.id}>
@@ -47,9 +48,9 @@ function ProductCard({ item }) {
           alt={item.title}
         ></Image>
         <h4 className={styles.productTitle}>{item.title}</h4>
-        </Link>
-        <p className={styles.text}>${item.price}</p>
-      <button onClick={e => handleClick(e)}>
+      </Link>
+      <p className={styles.text}>${item.price}</p>
+      <button onClick={(e) => handleClick(e)}>
         <GrCart /> Add to cart
       </button>
     </div>

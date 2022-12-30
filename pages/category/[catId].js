@@ -23,9 +23,7 @@ export default function Category({ categoryItems }) {
 }
 
 export async function getStaticPaths() {
-  const cats = await fetch(
-    `${server}/api/category`
-  ).then((r) => r.json());
+  const cats = await fetch(`${server}/api/category`).then((r) => r.json());
   return {
     paths: cats.map((item) => {
       const catId = item.name.toLowerCase();

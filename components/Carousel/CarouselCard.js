@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useState } from "react";
 import styles from "../../styles/carousel.module.css";
 
-function CarouselCard({ item, pcRef}) {
+function CarouselCard({ item, pcRef }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
 
   const handleMouseOver = () => {
@@ -13,14 +14,8 @@ function CarouselCard({ item, pcRef}) {
     item.images[0] ? setHoverPic(item.images[0]) : null;
   };
 
-
-
   return (
-    <div
-      ref={pcRef}
-      className={styles.productCard}
-      key={item.id}
-    >
+    <div ref={pcRef} className={styles.productCard} key={item.id}>
       <Link href={`/products/${item.id}`}>
         <img
           className={styles.productImage}

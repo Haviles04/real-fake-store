@@ -3,33 +3,30 @@ import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
 import { server } from "../../config";
 
-
 export default function Products({ products }) {
-
   return (
     <>
-    <Meta title='All Items' descript='All Items' />
-    <div className={styles.main}>
-      <h1>All Products</h1>
-      <div className={styles.container}>
-      {products.map((item) => (
-        <ProductCard key={item.id} item={item} />
-      ))}
+      <Meta title="All Items" descript="All Items" />
+      <div className={styles.main}>
+        <h1>All Products</h1>
+        <div className={styles.container}>
+          {products.map((item) => (
+            <ProductCard key={item.id} item={item} />
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 }
 
 export async function getStaticProps({ params }) {
-    const products = await fetch(
-      `${server}/api/category/all`
-    ).then((r) => r.json());
-  
-    return {
-      props: {
-        products
-      },
-    };
-  }
-  
+  const products = await fetch(`${server}/api/category/all`).then((r) =>
+    r.json()
+  );
+
+  return {
+    props: {
+      products,
+    },
+  };
+}
