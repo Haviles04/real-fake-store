@@ -4,10 +4,10 @@ import Meta from "../../components/Meta";
 import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
 import { server } from '../../config/index'
-import { useCartUpdate } from "../../customCartHook/CartContextProvider";
+import { useCart } from "../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
-  const updateCart = useCartUpdate();
+  const {dispatch} = useCart();
   const product = pageProduct[0];
   const [bigImage, setBigImage] = useState(product.images[0]);
   const [secondImage, setSecondImage] = useState(product.images[1]);
@@ -28,13 +28,13 @@ export default function Products({ pageProduct }) {
   
   const handleClick = (e) => {
     e.preventDefault()
-    updateCart({
+    dispatch({type: 'addToCart', payload:{
       name: product.title,
       id: product.id,
       image: product.images[0],
       price: product.price,
       qty: 1
-    });
+    }});
   }
 
 
