@@ -26,22 +26,25 @@ function Carousel({ products }) {
   };
 
   const handleCLickForward = () => {
+    clearTimeout(scrollTimeout)
+    scrollTimeout = setTimeout( () => {
     newX.current =
       caro.current.scrollLeft +
       pcRef.current.getBoundingClientRect().width * scrollCards.current;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
+    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });},150)
   };
 
   const handleClickBackward = () => {
+    clearTimeout(scrollTimeout)
+    scrollTimeout = setTimeout( () => {
     newX.current =
       caro.current.scrollLeft -
       pcRef.current.getBoundingClientRect().width * scrollCards.current;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });
-  };
+    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });} , 150)
+    };
 
-  const handleScroll = (e) => {
+  const handleScroll = () => {
     clearTimeout(scrollTimeout);
-    // only fire on the last scroll event
     scrollTimeout = setTimeout(() => {
       showOrHideBtns();
     }, 250);
