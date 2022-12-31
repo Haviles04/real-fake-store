@@ -49,7 +49,6 @@ export function CartContextProvider({ children }) {
             ),
             totalItems: (state.totalItems -= action.payload.qty),
           };
-
         default:
           return state;
       }

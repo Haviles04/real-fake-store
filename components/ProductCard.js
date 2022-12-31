@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/productCard.module.css";
 import { GrCart } from "react-icons/gr";
 import { BsHeart } from "react-icons/bs";
@@ -12,7 +12,6 @@ function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
   const { favorites, dispatchFavorites } = useFavorites();
   const { dispatch } = useCart();
-  console.log(item);
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -24,25 +23,14 @@ function ProductCard({ item }) {
 
 
   const handleHeartCLick = (e) => {
-    e.preventDefault();
-    if (!item.favorite) {
-      item.favorite = true
-      setFavoritesArray()
-      console.log(favorites.items)
+    e.preventDefault()
+    const alreadyFavorited = favorites.items.includes(item);
+    if(alreadyFavorited){
+      dispatchFavorites({type:'removeFromFavorites', payload: item})
       return
-    } 
-      item.favorite = !item.favorite
-      setFavoritesArray()
-  };
-
-  const setFavoritesArray = () => {
-    if (item.favorite) {
-      dispatchFavorites({ type: "addToFavorites", payload: item });
-      return;
     }
-    dispatchFavorites({ type: "removeFromFavorites", payload: item });
+    dispatchFavorites({type:'addToFavorites', payload:item})
   };
-
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -85,7 +73,7 @@ function ProductCard({ item }) {
           className={styles.heartBtn}
           onClick={(e) => handleHeartCLick(e)}
         >
-          {item.favorite ? (
+          {favorites.items.includes(item) ? (
             <BsHeartFill color={"red"} size={18} />
           ) : (
             <BsHeart color={"red"} size={18} />
