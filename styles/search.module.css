@@ -1,0 +1,14 @@
+.searchContainer{
+    text-align: center;
+}
+
+.productCards{
+        margin: 0 auto;
+        width: 50%;
+        display: grid;
+        gap: 20px;
+        justify-items: center;
+        justify-content: center;
+        grid-template-columns: repeat(3, 1fr);
+      
+}
