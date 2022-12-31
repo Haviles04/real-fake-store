@@ -6,12 +6,13 @@ import { GrCart } from "react-icons/gr";
 import { server } from "../../config/index";
 import { useCart } from "../../customCartHook/CartContextProvider";
 
-export default function Products({ pageProduct }) {
+export default function Products({ pageProduct, products }) {
   const { dispatch } = useCart();
   const product = pageProduct[0];
   const [bigImage, setBigImage] = useState(product.images[0]);
   const [secondImage, setSecondImage] = useState(product.images[1]);
   const [thirdImage, setThirdImage] = useState(product.images[2]);
+
 
   const swapImages = (current) => {
     const filler = bigImage;
@@ -95,9 +96,10 @@ export async function getStaticPaths() {
   return {
     paths: products.map((item) => {
       const productId = item.id.toString();
+      const productName = item.title.toString();
       return {
         params: {
-          productId,
+          productId: `${productId}=${productName}`
         },
       };
     }),

@@ -3,10 +3,14 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/productCard.module.css";
 import { GrCart } from "react-icons/gr";
+import { BsHeart } from "react-icons/bs";
+import { BsHeartFill } from "react-icons/bs";
 import { useCart } from "../customCartHook/CartContextProvider";
+import { useFavorites } from "../customFavoritesHook/FavoritesContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
+  const { favorites, dispatchFavorites } = useFavorites();
   const { dispatch } = useCart();
 
   const handleMouseOver = () => {
@@ -16,6 +20,28 @@ function ProductCard({ item }) {
   const handleMouseOut = () => {
     item.images[0] ? setHoverPic(item.images[0]) : null;
   };
+
+
+  const handleHeartCLick = (e) => {
+    e.preventDefault();
+    if (!item.favorite) {
+      item.favorite = true
+      setFavoritesArray()
+      console.log(favorites.items)
+      return
+    } 
+      item.favorite = !item.favorite
+      setFavoritesArray()
+  };
+
+  const setFavoritesArray = () => {
+    if (item.favorite) {
+      dispatchFavorites({ type: "addToFavorites", payload: item });
+      return;
+    }
+    dispatchFavorites({ type: "removeFromFavorites", payload: item });
+  };
+
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -33,7 +59,7 @@ function ProductCard({ item }) {
 
   return (
     <div className={styles.productCard} key={item.id}>
-      <Link href={`/products/${item.id}`}>
+      <Link href={`/products/${item.id}=${item.title}`}>
         <Image
           className={styles.productImage}
           onMouseOver={() => {
@@ -50,9 +76,21 @@ function ProductCard({ item }) {
         <h4 className={styles.productTitle}>{item.title}</h4>
       </Link>
       <p className={styles.text}>${item.price}</p>
-      <button onClick={(e) => handleClick(e)}>
-        <GrCart /> Add to cart
-      </button>
+      <div className={styles.cartAndHeart}>
+        <button onClick={(e) => handleClick(e)}>
+          <GrCart /> Add to cart
+        </button>
+        <button
+          className={styles.heartBtn}
+          onClick={(e) => handleHeartCLick(e)}
+        >
+          {item.favorite ? (
+            <BsHeartFill color={"red"} size={18} />
+          ) : (
+            <BsHeart color={"red"} size={18} />
+          )}
+        </button>
+      </div>
     </div>
   );
 }
