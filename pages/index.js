@@ -9,6 +9,7 @@ import { server } from "../config";
 
 export default function Home({ products}) {
   
+  console.log(products)
 
   return (
     <>

@@ -12,6 +12,7 @@ function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
   const { favorites, dispatchFavorites } = useFavorites();
   const { dispatch } = useCart();
+  console.log(item);
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -59,7 +60,7 @@ function ProductCard({ item }) {
 
   return (
     <div className={styles.productCard} key={item.id}>
-      <Link href={`/products/${item.id}=${item.title.replace(/\s/g, '')}`}>
+      <Link href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title.toLowerCase().replace(/\s/g, '')}`}>
         <Image
           className={styles.productImage}
           onMouseOver={() => {

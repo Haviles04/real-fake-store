@@ -1,18 +1,17 @@
 import { useState } from "react";
 import Image from "next/image";
-import Meta from "../../components/Meta";
-import styles from "../../styles/productPage.module.css";
+import Meta from "../../../components/Meta";
+import styles from "../../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
-import { server } from "../../config/index";
-import { useCart } from "../../customCartHook/CartContextProvider";
+import { server } from "../../../config/index";
+import { useCart } from "../../../customCartHook/CartContextProvider";
 
-export default function Products({ pageProduct, products }) {
+export default function Products({ pageProduct }) {
   const { dispatch } = useCart();
   const product = pageProduct[0];
   const [bigImage, setBigImage] = useState(product.images[0]);
   const [secondImage, setSecondImage] = useState(product.images[1]);
   const [thirdImage, setThirdImage] = useState(product.images[2]);
-
 
   const swapImages = (current) => {
     const filler = bigImage;
@@ -96,10 +95,15 @@ export async function getStaticPaths() {
   return {
     paths: products.map((item) => {
       const productId = item.id.toString();
-      const productName = item.title.toString();
+      const productName = item.title
+        .toLowerCase()
+        .replace(/\s/g, "")
+        .toString();
+      const catId = item.category.name.toLowerCase().toString();
       return {
         params: {
-          productId: `${productId}=${productName.replace(/\s/g, '')}`
+          catId: catId,
+          productId: `${productId}=${productName}`,
         },
       };
     }),

@@ -13,7 +13,7 @@ export default function NavLinks({ cats, onMobile, setMenuIsOpen }) {
       <ul>
         {cats.map((cat) => (
           <li key={cat.id}>
-            <Link onClick={() => closeMenu()} href={`/category/${cat.name.toLowerCase()}`}>
+            <Link onClick={() => closeMenu()} href={`/${cat.name.toLowerCase()}`}>
               {cat.name}
             </Link>
           </li>

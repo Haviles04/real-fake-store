@@ -1,4 +1,4 @@
-import ProductCard from "../../components/ProductCard";
+import ProductCard from '../../components/ProductCard'
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
 import { server } from "../../config";
