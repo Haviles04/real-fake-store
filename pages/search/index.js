@@ -1,14 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { useSearch } from "../../customSearchHook/SearchContextProvider";
-import { server } from "../../config";
 import ProductCard from "../../components/ProductCard";
 import styles from "../../styles/search.module.css";
 
-export default function Search({ allProducts }) {
+export default function Search({ products}) {
   const router = useRouter();
   const searchTerm = router.query["product"]
-  const matchingProducts = allProducts
+  const matchingProducts = products
   .filter((item) => item.title.toLowerCase().includes(searchTerm));
 
 
@@ -34,14 +32,4 @@ export default function Search({ allProducts }) {
   );
 }
 
-export async function getStaticProps() {
-  const allProducts = await fetch(`${server}/api/category/all`).then((r) =>
-    r.json()
-  );
 
-  return {
-    props: {
-      allProducts,
-    },
-  };
-}

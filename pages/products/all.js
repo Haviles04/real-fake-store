@@ -4,6 +4,7 @@ import styles from "../../styles/category.module.css";
 import { server } from "../../config";
 
 export default function Products({ products }) {
+  
   return (
     <>
       <Meta title="All Items" descript="All Items" />

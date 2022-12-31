@@ -7,7 +7,9 @@ import sale2 from "../public/sale2.jpg";
 import Carousel from "../components/Carousel/Carousel";
 import { server } from "../config";
 
-export default function Home({ products }) {
+export default function Home({ products}) {
+  
+
   return (
     <>
       <Meta title={"Real Fake Store"} descript={"Real Fake Store"} />

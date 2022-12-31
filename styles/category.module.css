@@ -1,5 +1,6 @@
 .container {
   width: 50%;
+  max-width: 1200px;
   display: grid;
   gap: 20px;
   justify-items: center;

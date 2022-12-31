@@ -2,7 +2,6 @@ import { useRef } from "react";
 import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
 import { useSearch } from "../../customSearchHook/SearchContextProvider";
-import styles from "../../styles/navbar.module.css";
 
 function SearchBar({ setSearchIsOpen, onMobile }) {
   const { searchTerm, setSearchTerm } = useSearch();
@@ -27,7 +26,7 @@ function SearchBar({ setSearchIsOpen, onMobile }) {
           onChange={(e) => handleChange(e)}
           type="text"
         ></input>
-        <Link href={{ pathname: "/search", query: { product:searchTerm } }}>
+        <Link href={{ pathname: "/search", query: { product: searchTerm } }}>
           <button onClick={() => handleClick()}>
             <FiSearch />
           </button>

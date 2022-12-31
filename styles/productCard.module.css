@@ -7,10 +7,6 @@
     color: black;
 }
 
-.productCard button{
-    margin-bottom: 10px;
-    
-}
 
 .productCard button:hover{
     cursor: pointer;
@@ -26,6 +22,20 @@
     border-bottom: 1px solid rgb(66, 66, 66);
 }
 
+.cartAndHeart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heartBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    background-color: inherit;
+}
+
 @media only screen and (max-width: 600px) {
     .productCard{
         width: 90%;
@@ -33,6 +43,10 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+    }
+
+    .cartAndHeart{
+        margin-bottom: 20px;
     }
 
     .productTitle{

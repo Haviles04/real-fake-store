@@ -6,13 +6,13 @@ import SearchContextProvider from "../customSearchHook/SearchContextProvider";
 import FavoritesContextProvider from "../customFavoritesHook/FavoritesContextProvider";
 
 
-export default function App({ Component, pageProps, cats }) {
+export default function App({ Component, pageProps, cats, products }) {
   return (
     <FavoritesContextProvider>
       <CartContextProvider>
         <SearchContextProvider>
           <Layout cats={cats}>
-            <Component {...pageProps} />
+            <Component {...pageProps} cats={cats} products={products} />
           </Layout>
         </SearchContextProvider>
       </CartContextProvider>
@@ -22,7 +22,9 @@ export default function App({ Component, pageProps, cats }) {
 
 App.getInitialProps = async () => {
   const res = await fetch(`${server}/api/category`).then((r) => r.json());
+  const productsRes= await fetch(`${server}/api/category/all`).then((r) => r.json());
   return {
     cats: res,
+    products: productsRes
   };
 };
