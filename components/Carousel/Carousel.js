@@ -31,7 +31,7 @@ function Carousel({ products }) {
     newX.current =
       caro.current.scrollLeft +
       pcRef.current.getBoundingClientRect().width * scrollCards.current;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });},150)
+    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });},250)
   };
 
   const handleClickBackward = () => {
@@ -40,7 +40,7 @@ function Carousel({ products }) {
     newX.current =
       caro.current.scrollLeft -
       pcRef.current.getBoundingClientRect().width * scrollCards.current;
-    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });} , 150)
+    caro.current.scroll({ left: `${newX.current}`, behavior: "smooth" });} , 250)
     };
 
   const handleScroll = () => {
