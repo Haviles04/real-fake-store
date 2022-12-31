@@ -11,14 +11,6 @@ export default function FavoritesContextProvider({ children }) {
     (state, action) => {
       switch (action.type) {
         case "addToFavorites":
-          const existingItem = state.items.find(
-            (favoriteItem) => favoriteItem.id === action.payload.id
-          );
-          if (existingItem) {
-            return {
-              items: [...state.items],
-            };
-          }
           return {
             items: [...state.items, action.payload],
           };
