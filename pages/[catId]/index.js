@@ -1,9 +1,9 @@
-import ProductCard from '../../components/ProductCard'
+import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
 import { server } from "../../config";
 
-export default function Category({ categoryItems }) {
+export default function Category({ categoryItems, products }) {
   const pageTitle = categoryItems.length
     ? categoryItems[0].category.name
     : "We are still working on this page!";
@@ -15,7 +15,7 @@ export default function Category({ categoryItems }) {
       <h1>{pageTitle}</h1>
       <div className={styles.container}>
         {categoryItems.map((item) => (
-          <ProductCard key={item.id} item={item} />
+          <ProductCard products={products} key={item.id} item={item} />
         ))}
       </div>
     </div>
