@@ -13,17 +13,21 @@ function SearchBar({ setSearchIsOpen, onMobile }) {
   };
 
   const handleClick = () => {
-    if(onMobile){
+    if (onMobile) {
       setSearchIsOpen(false);
     }
-    inputRef.current.value = '';
-  }
+    inputRef.current.value = "";
+  };
 
   return (
     <div>
       <form>
-        <input ref={inputRef} onChange={(e) => handleChange(e)} type="text"></input>
-        <Link href={`/search?product=${searchTerm}`}>
+        <input
+          ref={inputRef}
+          onChange={(e) => handleChange(e)}
+          type="text"
+        ></input>
+        <Link href={{ pathname: "/search", query: { product:searchTerm } }}>
           <button onClick={() => handleClick()}>
             <FiSearch />
           </button>
