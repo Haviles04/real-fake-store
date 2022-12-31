@@ -1,18 +1,19 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { useSearch } from "../../customSearchHook/SearchContextProvider";
 import { server } from "../../config";
 import ProductCard from "../../components/ProductCard";
 import styles from "../../styles/search.module.css";
 
 export default function Search({ allProducts }) {
-  const { searchTerm } = useSearch();
+  const router = useRouter();
+  const searchTerm = router.query["product"]
   const matchingProducts = allProducts
-  .filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
+  .filter((item) => item.title.toLowerCase().includes(searchTerm));
 
 
   return (
     <div className={styles.searchContainer}>
-      
       {searchTerm ? 
       <h2>
         <h1>{searchTerm.toUpperCase()}</h1>
