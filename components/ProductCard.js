@@ -59,7 +59,7 @@ function ProductCard({ item }) {
 
   return (
     <div className={styles.productCard} key={item.id}>
-      <Link href={`/products/${item.id}=${item.title}`}>
+      <Link href={`/products/${item.id}=${item.title.replace(/\s/g, '')}`}>
         <Image
           className={styles.productImage}
           onMouseOver={() => {

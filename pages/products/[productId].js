@@ -99,7 +99,7 @@ export async function getStaticPaths() {
       const productName = item.title.toString();
       return {
         params: {
-          productId: `${productId}=${productName}`
+          productId: `${productId}=${productName.replace(/\s/g, '')}`
         },
       };
     }),
