@@ -5,7 +5,6 @@ import Meta from "../components/Meta";
 import sale1 from "../public/sale1.jpg";
 import sale2 from "../public/sale2.jpg";
 import Carousel from "../components/Carousel/Carousel";
-import { server } from "../config";
 
 export default function Home({ products }) {
   return (
@@ -31,15 +30,4 @@ export default function Home({ products }) {
       </div>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const products = await fetch(`${server}/api/category/suggested`).then((r) =>
-    r.json()
-  );
-  return {
-    props: {
-      products,
-    },
-  };
 }

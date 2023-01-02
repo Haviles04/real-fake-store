@@ -66,13 +66,14 @@ function Carousel({ products }) {
 
       <div ref={caro} className={styles.mainCaro} onScroll={handleScroll}>
         {products.map((item, i) => (
+          i < 12 ?
           <CarouselCard
             i={i}
             pcRef={pcRef}
             key={item.id}
             newX={newX}
             item={item}
-          />
+          /> : null
         ))}
       </div>
 
