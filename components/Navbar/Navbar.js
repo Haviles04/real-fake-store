@@ -6,10 +6,12 @@ import logo from "../../public/logo.png";
 import SearchBar from "./SearchBar";
 import NavLinks from "./NavLinks";
 import { useCart } from "../../customCartHook/CartContextProvider";
+import { useFavorites } from "../../customFavoritesHook/FavoritesContextProvider";
 
 
 function Navbar({ cats }) {
   const { cart } = useCart();
+  const {favorites} = useFavorites();
  
   return (
     <div className={styles.mainBar}>
@@ -23,7 +25,7 @@ function Navbar({ cats }) {
           Cart ({cart.totalItems})
         </Link>
         <Link className={styles.cartText} href="/favorites">
-          Favorites
+          Favorites({favorites.items.length})
         </Link>
       </div>
     </div>
