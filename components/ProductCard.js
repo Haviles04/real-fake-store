@@ -11,7 +11,14 @@ import { useFavorites } from "../customFavoritesHook/FavoritesContextProvider";
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
   const { favorites, dispatchFavorites } = useFavorites();
+  const [isFavorited, setIsFavorited] = useState(false);
   const { dispatch } = useCart();
+
+  useEffect(() => {
+    favorites.items.find((favItem) => item.id === favItem.id)
+      ? setIsFavorited(true)
+      : setIsFavorited(false);
+  }, [favorites.items, item.id]);
 
   const handleMouseOver = () => {
     item.images[1] ? setHoverPic(item.images[1]) : null;
@@ -21,15 +28,14 @@ function ProductCard({ item }) {
     item.images[0] ? setHoverPic(item.images[0]) : null;
   };
 
-
   const handleHeartCLick = (e) => {
-    e.preventDefault()
-    const alreadyFavorited = favorites.items.includes(item);
-    if(alreadyFavorited){
-      dispatchFavorites({type:'removeFromFavorites', payload: item})
-      return
+    e.preventDefault();
+    const already = favorites.items.find((favItem) => item.id === favItem.id);
+    if (already) {
+      dispatchFavorites({ type: "removeFromFavorites", payload: item });
+      return;
     }
-    dispatchFavorites({type:'addToFavorites', payload:item})
+    dispatchFavorites({ type: "addToFavorites", payload: item });
   };
 
   const handleClick = (e) => {
@@ -48,7 +54,11 @@ function ProductCard({ item }) {
 
   return (
     <div className={styles.productCard} key={item.id}>
-      <Link href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title.toLowerCase().replace(/\s/g, '')}`}>
+      <Link
+        href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title
+          .toLowerCase()
+          .replace(/\s/g, "")}`}
+      >
         <Image
           className={styles.productImage}
           onMouseOver={() => {
@@ -73,7 +83,7 @@ function ProductCard({ item }) {
           className={styles.heartBtn}
           onClick={(e) => handleHeartCLick(e)}
         >
-          {favorites.items.includes(item) ? (
+          {isFavorited ? (
             <BsHeartFill color={"red"} size={18} />
           ) : (
             <BsHeart color={"red"} size={18} />
