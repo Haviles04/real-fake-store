@@ -22,7 +22,7 @@ function Navbar({ cats }) {
         <Link className={styles.cartText} href="/cart">
           Cart ({cart.totalItems})
         </Link>
-        <Link className={styles.cartText} href="/">
+        <Link className={styles.cartText} href="/favorites">
           Favorites
         </Link>
       </div>
