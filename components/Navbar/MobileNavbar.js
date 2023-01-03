@@ -31,9 +31,15 @@ function MobileNavbar({ cats }) {
           />
         </Link>
         <div>
+          <div className={styles.cartContainer}>
           <Link href='/cart'>
           <GrCart className={styles.cart} size={24} />
+          { cart.items.length ?
+          <div className={styles.cartAmt}>
+            <span>{cart.items.length}</span>
+          </div> : null}
           </Link>
+          </div>
           <Link href='/favorites'>
           <FiHeart color="black" className={styles.heart}size={24} />
           </Link>

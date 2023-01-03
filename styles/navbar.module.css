@@ -139,4 +139,28 @@
     display: none;
   }
 
+  .cartContainer{
+    display:inline-block;
+    position: relative;
+   
+  }
+
+
+  .cartAmt{
+    font-size: .75rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 55, 55);
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    padding: 4px;
+    top: 0%;
+    right: 10%;
+  }
+
+  
+
 }
