@@ -65,6 +65,16 @@
     cursor: pointer;
   }
 
+  .cart {
+    padding-right: 15px;
+    cursor: pointer;
+  }
+
+  .heart{
+    padding-right: 15px;
+    cursor: pointer;
+  }
+
   .search{
     padding-right: 15px;
     cursor: pointer;
