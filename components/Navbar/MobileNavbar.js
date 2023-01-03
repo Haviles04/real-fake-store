@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {useCart} from '../../customCartHook/CartContextProvider'
+import { useCart } from "../../customCartHook/CartContextProvider";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +14,7 @@ import SearchBar from "./SearchBar";
 function MobileNavbar({ cats }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
-  const {cart} = useCart();
+  const { cart } = useCart();
 
   return (
     <>
@@ -32,16 +32,17 @@ function MobileNavbar({ cats }) {
         </Link>
         <div>
           <div className={styles.cartContainer}>
-          <Link href='/cart'>
-          <GrCart className={styles.cart} size={24} />
-          { cart.items.length ?
-          <div className={styles.cartAmt}>
-            <span>{cart.items.length}</span>
-          </div> : null}
-          </Link>
+            <Link href="/cart">
+              <GrCart className={styles.cart} size={24} />
+              {cart.items.length ? (
+                <div className={styles.cartAmt}>
+                  <span>{cart.items.length}</span>
+                </div>
+              ) : null}
+            </Link>
           </div>
-          <Link href='/favorites'>
-          <FiHeart color="black" className={styles.heart}size={24} />
+          <Link href="/favorites">
+            <FiHeart color="black" className={styles.heart} size={24} />
           </Link>
           <FiSearch
             className={styles.search}
