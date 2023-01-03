@@ -18,7 +18,6 @@ function CartItem({ item }) {
   };
 
   const handleChange = (e) => {
-    console.log(cart);
     let qty = e.target.value;
     dispatch({
       type: "updateQty",
