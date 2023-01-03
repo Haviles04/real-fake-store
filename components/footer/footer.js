@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from '../../styles/footer.module.css'
 
-const footer = () => {
+const Footer = () => {
   return (
-    <div>Footie</div>
+    <div className={styles.footerContainer}>Footie</div>
   )
 }
 
-export default footer
+export default Footer
