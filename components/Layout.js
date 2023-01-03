@@ -1,14 +1,16 @@
-import styles from "../styles/navbar.module.css";
+import styles from "../styles/layout.module.css";
 import Navbar from "../components/Navbar/Navbar";
 import MobileNavbar from "./Navbar/MobileNavbar";
+import Footer from "./footer/footer";
 
 function Layout({ children, cats }) {
   return (
-    <>
+    <div className={styles.container}>
       <Navbar cats={cats} />
       <MobileNavbar cats={cats} />
-      <div className={styles.container}>{children}</div>
-    </>
+      {children}
+      <Footer cats={cats} />
+    </div>
   );
 }
 
