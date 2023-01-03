@@ -61,17 +61,61 @@
 
 
 
-@media only screen and (max-width: 990px) {
+@media (max-width: 990px) {
     .cartContainer{
         width: 100%;
+        text-align: center;
     }
-}
 
-@media only screen and (max-width: 990px) {
- 
-    
     .itemImg{
         max-width: 150px;
     }
+
+    .cartContainer th{
+        display: none;
+    }
+
+    .price , .totalPrice{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     
+    .cartContainer td{
+        border: none;
+    }
+
+    .itemHeader{
+        display: flex;
+        flex-direction: row;
+        grid-column: 1 / span 3;
+    }
+
+    .itemHeader h4{
+        padding-left: 10px;
+    }
+
+    .btnRemove{
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    .quantity{ 
+        padding: 0;
+    }
+
+    .quantity select{
+        margin-top: 10px;
+        width: 75%;
+    }
+
+    .cartItemContainer tr{
+        display: grid;
+        grid-template-rows: repeat (3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid rgb(189, 189, 189);
+    }
+
 }
+

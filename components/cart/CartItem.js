@@ -33,44 +33,33 @@ function CartItem({ item }) {
   return (
     <tbody className={styles.cartItemContainer}>
       <tr>
-        <td>
-          <div className={styles.itemHeader}>
-            <h4>{item.name}</h4>
-            <img className={styles.itemImg} src={item.image} />
-          </div>
+        <td className={styles.itemHeader}>
+          <img className={styles.itemImg} src={item.image} />
+          <h4>{item.name}</h4>
         </td>
-        <td>
-          <div className={styles.quantity}>
-            <label htmlFor="quantity">Quantity</label>
-            <select
-              defaultValue={item.qty}
-              name="quantity"
-              ref={qtySelect}
-              onChange={(e) => handleChange(e)}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button
-              className={styles.btnRemove}
-              onClick={(e) => handleClick(e)}
-            >
-              Remove Item
-            </button>
-          </div>
+        <td className={styles.quantity}>
+          <label htmlFor="quantity">Quantity</label>
+          <select
+            defaultValue={item.qty}
+            name="quantity"
+            ref={qtySelect}
+            onChange={(e) => handleChange(e)}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button className={styles.btnRemove} onClick={(e) => handleClick(e)}>
+            Remove Item
+          </button>
         </td>
-        <td>
-          <div className={styles.price}>
-            <p>${item.price}</p>
-          </div>
+        <td className={styles.price}>
+          <p>${item.price}</p>
         </td>
-        <td>
-          <div className={styles.totalPrice}>
-            <p>${totalPrice}</p>
-          </div>
+        <td className={styles.totalPrice}>
+          <p>${totalPrice}</p>
         </td>
       </tr>
     </tbody>
