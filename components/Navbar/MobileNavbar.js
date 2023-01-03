@@ -8,6 +8,7 @@ import logo from "../../public/logo.png";
 import { GiHamburgerMenu } from "react-icons/Gi";
 import { FiSearch } from "react-icons/fi";
 import { GrCart } from "react-icons/gr";
+import { GrClose } from "react-icons/gr";
 import { FiHeart } from "react-icons/fi";
 import SearchBar from "./SearchBar";
 
@@ -16,14 +17,18 @@ function MobileNavbar({ cats }) {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const { cart } = useCart();
 
+  const handleClick = () => {
+    setMenuIsOpen(false);
+    setSearchIsOpen(false);
+  };
+
   return (
     <>
       <div className={styles.mobileBar}>
         <Link href="/">
           <Image
             onClick={() => {
-              setMenuIsOpen(false);
-              setSearchIsOpen(false);
+              handleClick();
             }}
             className={styles.logo}
             src={logo}
@@ -33,16 +38,29 @@ function MobileNavbar({ cats }) {
         <div>
           <div className={styles.cartContainer}>
             <Link href="/cart">
-              <GrCart className={styles.cart} size={24} />
-              {cart.items.length ? (
+              <GrCart
+                onClick={() => {
+                  handleClick();
+                }}
+                className={styles.cart}
+                size={24}
+              />
+              {cart.totalItems ? (
                 <div className={styles.cartAmt}>
-                  <span>{cart.items.length}</span>
+                  <span>{cart.totalItems}</span>
                 </div>
               ) : null}
             </Link>
           </div>
           <Link href="/favorites">
-            <FiHeart color="black" className={styles.heart} size={24} />
+            <FiHeart
+              onClick={() => {
+                handleClick();
+              }}
+              color="black"
+              className={styles.heart}
+              size={24}
+            />
           </Link>
           <FiSearch
             className={styles.search}
@@ -52,14 +70,25 @@ function MobileNavbar({ cats }) {
               setMenuIsOpen(false);
             }}
           />
-          <GiHamburgerMenu
-            onClick={() => {
-              setMenuIsOpen(!menuIsOpen);
-              setSearchIsOpen(false);
-            }}
-            className={styles.hamburger}
-            size={24}
-          />
+          {menuIsOpen ? (
+            <GrClose
+              className={styles.hamburger}
+              size={24}
+              onClick={() => {
+                setMenuIsOpen(false);
+                setSearchIsOpen(false);
+              }}
+            />
+          ) : (
+            <GiHamburgerMenu
+              onClick={() => {
+                setMenuIsOpen(true);
+                setSearchIsOpen(false);
+              }}
+              className={styles.hamburger}
+              size={24}
+            />
+          )}
         </div>
       </div>
 
