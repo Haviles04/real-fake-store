@@ -47,11 +47,18 @@
 }
 
 .quantity {
-    display: flex;
-    padding: 20%;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
+}
+
+.quantity select{
+    display: block;
+    margin: 10px auto;
+}
+
+.quantity button{
+    display: block;
+    
+    margin: 20px auto;
 }
 
 .itemImg{
@@ -61,7 +68,7 @@
 
 
 
-@media (max-width: 990px) {
+@media(max-width: 990px) {
     .cartContainer{
         width: 100%;
         text-align: center;
