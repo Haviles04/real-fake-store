@@ -2,7 +2,7 @@ import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
 
-export default function AllProducts({ allProducts }) {
+export default function Products({ allProducts }) {
   
   return (
     <>
