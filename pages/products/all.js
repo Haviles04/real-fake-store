@@ -1,7 +1,7 @@
 import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
-import { server } from "../../config";
+import allProducts from '../../data/products/all.json'
 
 export default function Products({ products }) {
   
@@ -21,10 +21,7 @@ export default function Products({ products }) {
 }
 
 export async function getStaticProps({ params }) {
-  const products = await fetch(`${server}/api/category/all`).then((r) =>
-    r.json()
-  );
-
+  const products = allProducts;
   return {
     props: {
       products,
