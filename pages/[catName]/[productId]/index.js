@@ -100,7 +100,7 @@ export async function getStaticPaths() {
       return {
         params: {
           catName,
-          productId: `${productId}=${productName}`,
+          productId
         },
       };
     }),
