@@ -1,3 +1,4 @@
+import allProducts from '../../../data/products/all.json'
 import { useState } from "react";
 import Image from "next/image";
 import Meta from "../../../components/Meta";
@@ -89,9 +90,7 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const products = await fetch(`${server}/api/category/all`).then((r) =>
-    r.json()
-  );
+  const products = allProducts;
   return {
     paths: products.map((item) => {
       const productId = item.id.toString();
@@ -99,10 +98,10 @@ export async function getStaticPaths() {
         .toLowerCase()
         .replace(/\s/g, "")
         .toString();
-      const catId = item.category.name.toLowerCase().toString();
+      const catName = item.category.name.toLowerCase().toString();
       return {
         params: {
-          catId: catId,
+          catName,
           productId: `${productId}=${productName}`,
         },
       };
@@ -112,11 +111,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const allproducts = await fetch(`${server}/api/category/all`).then((r) =>
-    r.json()
-  );
-
-  const pageProduct = allproducts.filter(
+  const pageProduct = allProducts.filter(
     (item) => item.id === parseInt(params.productId)
   );
 
