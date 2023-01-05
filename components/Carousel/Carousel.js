@@ -4,7 +4,7 @@ import CarouselCard from "./CarouselCard";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-function Carousel({ products }) {
+function Carousel({ suggested }) {
   const caro = useRef();
   const pcRef = useRef();
   const newX = useRef(0);
@@ -65,15 +65,13 @@ function Carousel({ products }) {
       </button>
 
       <div ref={caro} className={styles.mainCaro} onScroll={handleScroll}>
-        {products.map((item, i) => (
-          i < 12 ?
+        {suggested.map((item) => (
           <CarouselCard
-            i={i}
             pcRef={pcRef}
             key={item.id}
             newX={newX}
             item={item}
-          /> : null
+          /> 
         ))}
       </div>
 

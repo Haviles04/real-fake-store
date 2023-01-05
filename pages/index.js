@@ -6,7 +6,7 @@ import sale1 from "../public/sale1.jpg";
 import sale2 from "../public/sale2.jpg";
 import Carousel from "../components/Carousel/Carousel";
 
-export default function Home({ products }) {
+export default function Home({ suggested }) {
   return (
     <>
       <Meta title={"Real Fake Store"} descript={"Real Fake Store"} />
@@ -26,7 +26,7 @@ export default function Home({ products }) {
           ></Image>
         </Link>
         <h3>May We Suggest</h3>
-        <Carousel products={products} />
+        <Carousel suggested={suggested} />
       </div>
     </>
   );
