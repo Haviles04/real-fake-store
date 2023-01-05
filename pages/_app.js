@@ -5,13 +5,13 @@ import SearchContextProvider from "../customSearchHook/SearchContextProvider";
 import FavoritesContextProvider from "../customFavoritesHook/FavoritesContextProvider";
 
 
-export default function App({ Component, pageProps, cats, products, suggested }) {
+export default function App({ Component, pageProps, cats, products}) {
   return (
     <FavoritesContextProvider>
       <CartContextProvider>
         <SearchContextProvider>
           <Layout cats={cats}>
-            <Component {...pageProps} cats={cats} products={products} suggested={suggested} />
+            <Component {...pageProps} cats={cats} products={products}/>
           </Layout>
         </SearchContextProvider>
       </CartContextProvider>
@@ -22,10 +22,8 @@ export default function App({ Component, pageProps, cats, products, suggested })
 App.getInitialProps = async () => {
   const {cats} = await import(`../data/category/category.json`)
   const {products}= await import('../data/products/all.json')
-  const {suggested} = await import ('../data/products/suggested.json')
   return {
     cats,
     products,
-    suggested
   };
 };

@@ -6,7 +6,7 @@ import sale1 from "../public/sale1.jpg";
 import sale2 from "../public/sale2.jpg";
 import Carousel from "../components/Carousel/Carousel";
 
-export default function Home({ suggested }) {
+export default function Home({suggested}) {
   return (
     <>
       <Meta title={"Real Fake Store"} descript={"Real Fake Store"} />
@@ -30,4 +30,13 @@ export default function Home({ suggested }) {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const {suggested} = await import('../data/products/suggested.json')
+  return {
+    props: {
+      suggested,
+    },
+  };
 }

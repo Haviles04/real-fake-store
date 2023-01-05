@@ -20,7 +20,7 @@ export default function Products({ products }) {
 }
 
 export async function getStaticProps() {
-  const products = await fetch('https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts').then(r => r.json())
+  const {products} = await import('../../data/products/all.json')
   return {
     props: {
       products,
