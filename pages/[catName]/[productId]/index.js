@@ -88,9 +88,7 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const products = await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts`).then((r) =>
-    r.json()
-  );
+  const {products} = await import('../../../data/products/all.json')
   return {
     paths: products.map((item) => {
       const productId = item.id.toString();
@@ -111,11 +109,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const allproducts = await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts`).then((r) =>
-    r.json()
-  );
+  const {products} = await import('../../../data/products/all.json')
 
-  const pageProduct = allproducts.filter(
+  const pageProduct = products.filter(
     (item) => item.id === parseInt(params.productId)
   );
 

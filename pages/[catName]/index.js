@@ -24,7 +24,7 @@ export default function Category({ categoryItems, products }) {
 }
 
 export async function getStaticPaths() {
-  const cats = await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/categories`).then((r) => r.json());
+  const {cats} = await import('../../data/category/category.json')
   return {
     paths: cats.map((item) => {
       const catName = item.name.toLowerCase();
@@ -39,10 +39,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const categoryItems = await fetch(
-    `https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/${params.catName}`
-  ).then((r) => r.json());
-
+  const { categoryItems } = await import(`../../data/products/${params.catName}.json`)
   return {
     props: {
       categoryItems,
