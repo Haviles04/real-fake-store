@@ -1,4 +1,4 @@
-import  suggested  from '../../../data/products/suggested.json'
+import  {suggested}  from '../../../data/products/suggested.json'
 
 export default function handler(req, res){
     try{
