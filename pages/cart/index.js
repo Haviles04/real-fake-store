@@ -30,7 +30,7 @@ export default function Cart() {
         ) : (
           <>
             <h1>Your Shopping Cart is empty</h1>
-            <Link href="/all">
+            <Link href="/products">
               <button>Click here to shop!</button>
             </Link>
           </>
