@@ -21,8 +21,8 @@ export default function App({ Component, pageProps, cats, products }) {
 }
 
 App.getInitialProps = async () => {
-  const res = await fetch(`${server}/api/category`).then((r) => r.json());
-  const productsRes= await fetch(`${server}/api/category/all`).then((r) => r.json());
+  const res = await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/categories`).then((r) => r.json());
+  const productsRes= await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts`).then((r) => r.json());
   return {
     cats: res,
     products: productsRes

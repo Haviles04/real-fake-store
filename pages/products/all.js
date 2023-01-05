@@ -1,7 +1,6 @@
 import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
-import allProducts from '../../data/products/all.json'
 
 export default function Products({ products }) {
   
@@ -21,7 +20,7 @@ export default function Products({ products }) {
 }
 
 export async function getStaticProps({ params }) {
-  const products = allProducts;
+  const products = await fetch('https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts')
   return {
     props: {
       products,
