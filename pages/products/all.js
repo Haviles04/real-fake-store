@@ -10,7 +10,7 @@ export default function Products({ allProducts }) {
       <div className={styles.main}>
         <h1>All Products</h1>
         <div className={styles.container}>
-          {products.map((item) => (
+          {allProducts.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}
         </div>
