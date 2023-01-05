@@ -17,9 +17,14 @@
 }
 
 .shopFooter ul{
+    margin-top: 0;
     list-style-type: none;
     justify-self: start;
     padding: 0;
+}
+
+.shopFooter li{
+    margin-top:5px;
 }
 
 .shopFooter a {
