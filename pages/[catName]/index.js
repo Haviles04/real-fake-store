@@ -1,8 +1,6 @@
 import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
-import { server } from "../../config";
-import  categories  from '../../data/category/category.json'
 
 export default function Category({ categoryItems, products }) {
   const pageTitle = categoryItems.length
