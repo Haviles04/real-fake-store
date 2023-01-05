@@ -21,10 +21,10 @@ export default function App({ Component, pageProps, cats, products }) {
 }
 
 App.getInitialProps = async () => {
-  const res = await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/categories`).then((r) => r.json());
-  const productsRes= await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/allproducts`).then((r) => r.json());
+  const {cats} = await import(`../data/category/category.json`)
+  const {products}= await import('../data/products/all.json')
   return {
-    cats: res,
-    products: productsRes
+    cats,
+    products
   };
 };
