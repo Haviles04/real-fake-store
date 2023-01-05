@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const categoryItems = await import(`../../data/products/${params.catName}.json`)
+  const {categoryItems} = await import(`../../data/products/${params.catName}.json`)
   return {
     props: {
       categoryItems,
