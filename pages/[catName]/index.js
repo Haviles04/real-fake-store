@@ -2,6 +2,7 @@ import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
 
+
 export default function Category({ categoryItems, products }) {
   const pageTitle = categoryItems.length
     ? categoryItems[0].category.name
@@ -37,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const categoryItems = await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/${params.catName}`).then(r => r.json())
+  const { categoryItems } = await import(`../../data/products/${params.catName}.json`)
   return {
     props: {
       categoryItems,
