@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/navbar.module.css";
 import logo from "../../public/logo.png";
-import { GiHamburgerMenu } from "react-icons/Gi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 import { GrCart } from "react-icons/gr";
 import { GrClose } from "react-icons/gr";
