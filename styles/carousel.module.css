@@ -76,7 +76,7 @@
 
 @media only screen and (max-width: 660px) {
     .mainCaro{
-        width: 100%;
+        width: 99%;
         height: auto;
         overflow-x: scroll;
         scroll-snap-type: x mandatory;
