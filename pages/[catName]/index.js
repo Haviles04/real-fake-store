@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { categoryItems } = await import(`../../data/products/${params.catName}.json`)
+  const categoryItems = await fetch(`https://63a22dfbba35b96522f1af07.mockapi.io/api/v1/${params.catName}`).then(r => r.json())
   return {
     props: {
       categoryItems,
