@@ -33,7 +33,7 @@ export default function Home({suggested}) {
 }
 
 export async function getStaticProps() {
-  const {suggested} = await import('../data/products/suggested.json')
+  const {suggested} = await import('../data/products/all.json')
   return {
     props: {
       suggested,
