@@ -11,7 +11,7 @@ export default function Home({suggested}) {
     <>
       <Meta title={"Real Fake Store"} descript={"Real Fake Store"} />
       <div className={styles.container}>
-        <Link className={styles.heroAd} href="/products/all">
+        <Link className={styles.heroAd} href="/products">
           <Image
             className={styles.heroImg}
             src={sale2}
