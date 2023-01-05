@@ -6,10 +6,14 @@ import Footer from "./footer/footer";
 function Layout({ children, cats }) {
   return (
     <div className={styles.container}>
-      <Navbar cats={cats} />
-      <MobileNavbar cats={cats} />
-      {children}
-      <Footer cats={cats} />
+      <nav>
+        <Navbar cats={cats} />
+        <MobileNavbar cats={cats} />
+      </nav>
+      <main>{children}</main>
+      <footer>
+        <Footer cats={cats} />
+      </footer>
     </div>
   );
 }
