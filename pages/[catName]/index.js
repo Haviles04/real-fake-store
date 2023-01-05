@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const categoryItems = await fetch(`${server}/category/${params.catName}`)
+  const categoryItems = await fetch(`${server}/category/${params.catName}`).then(r => r.json())
   return {
     props: {
       categoryItems,
