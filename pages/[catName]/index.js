@@ -1,7 +1,7 @@
 import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
-
+import { server } from '../../config/index'
 
 export default function Category({ categoryItems, products }) {
   const pageTitle = categoryItems.length
@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { categoryItems } = await import(`../../data/products/${params.catName}.json`)
+  const categoryItems = await fetch(`${server}/category/${params.catName}`)
   return {
     props: {
       categoryItems,
