@@ -107,14 +107,16 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps(context) {
+  const catName = context.params.catName;
+  const id = parseInt(context.params.productId);
   const { categoryItems } = await import(
-    `../../../data/products/${params.catName}Data.json`
+    `../../../data/products/${catName}Data.json`
   );
 
   const pageProduct = categoryItems.find(
-    (item) => item.id === parseInt(params.productId)
-  );
+    (item) => item.id === id)
+  ;
 
   return {
     props: {
