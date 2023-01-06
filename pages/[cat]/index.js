@@ -23,7 +23,7 @@ export async function getStaticPaths() {
     paths: cats.map((item) => {
       return {
         params: {
-          catName : item.name.toLowerCase()
+          cat : item.name.toLowerCase()
         },
       };
     }),
@@ -33,13 +33,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { categoryItems } = await import(
-    `../../data/products/${params.catName}Data.json`
+    `../../data/products/${params.cat}Data.json`
   );
  
   return {
     props: {
       categoryItems,
-      catName: params.catName
+      catName: params.cat
     },
   };
 }

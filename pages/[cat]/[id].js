@@ -91,8 +91,8 @@ export async function getStaticPaths() {
         .replace(/\s/g, "");
       return {
         params: {
-          catName :  item.category.name.toLowerCase(),
-          productId: `${item.id}=${productName}`,
+          cat :  item.category.name.toLowerCase(),
+          id: `${item.id}=${productName}`,
         },
       };
     }),
@@ -102,11 +102,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { categoryItems } = await import(
-    `../../data/products/${params.catName}Data.json`
+    `../../data/products/${params.cat}Data.json`
   );
 
   const pageProduct = categoryItems.find(
-    (item) => item.id === parseInt(params.productId)
+    (item) => item.id === parseInt(params.id)
   );
 
  
