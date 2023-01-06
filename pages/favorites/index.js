@@ -19,7 +19,7 @@ export default function Favorites() {
         ) : (
           <>
             <h1>Your have {favorites.items.length} favorites!</h1>
-            <Link href={"/all"}>
+            <Link href={"/all"} shallow>
               <button>Click here to shop!</button>
             </Link>
           </>
