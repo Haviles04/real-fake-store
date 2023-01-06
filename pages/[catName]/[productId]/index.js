@@ -100,11 +100,11 @@ export async function getStaticPaths() {
       return {
         params: {
           catName,
-          productId
+          productId: `${productId}=${productName}`,
         },
       };
     }),
-    fallback: true,
+    fallback: false,
   };
 }
 
