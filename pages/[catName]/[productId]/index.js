@@ -84,32 +84,34 @@ export default function Products({ pageProduct }) {
         </form>
       </div>
     </div>
-  ); 
+  );
 }
 
 export async function getStaticPaths() {
-  const {products} = await import('../../../data/products/all.json')
+  const { products } = await import("../../../data/products/all.json");
+
+  const allPaths = products.map((item) => {
+    const productId = item.id;
+    const productName = item.title.toLowerCase().replace(/\s/g, "").toString();
+    const catName = item.category.name.toLowerCase().toString();
+    return {
+      params: {
+        catName,
+        productId: `${productId}=${productName}`,
+      },
+    };
+  });
+
   return {
-    paths: products.map((item) => {
-      const productId = item.id;
-      const productName = item.title
-        .toLowerCase()
-        .replace(/\s/g, "")
-        .toString();
-      const catName = item.category.name.toLowerCase().toString();
-      return {
-        params: {
-          catName,
-          productId: `${productId}=${productName}`,
-        },
-      };
-    }),
-    fallback: 'blocking',
+    paths: allPaths,
+    fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
-  const {categoryItems} = await import(`../../../data/products/${params.catName}Data.json`)
+  const { categoryItems } = await import(
+    `../../../data/products/${params.catName}Data.json`
+  );
 
   const pageProduct = categoryItems.filter(
     (item) => item.id === parseInt(params.productId)
