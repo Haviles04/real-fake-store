@@ -22,8 +22,6 @@ export default function Products({ pageProduct }) {
     }
   };
 
-  console.log(pageProduct)
-
   const handleClick = (e) => {
     e.preventDefault();
     dispatch({
@@ -91,7 +89,7 @@ export async function getStaticPaths() {
         .replace(/\s/g, "");
       return {
         params: {
-          cat :  item.category.name.toLowerCase(),
+          cat :  item.category.name.toString().toLowerCase(),
           id: `${item.id}=${productName}`,
         },
       };
