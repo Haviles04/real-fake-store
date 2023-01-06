@@ -22,7 +22,7 @@ export default function Category({ categoryItems, products }) {
 }
 
 export async function getStaticPaths() {
-  const { cats } = await import("../../data/category/category.json");
+  const { cats } = await import("../../data/category/categoryData.json");
   return {
     paths: cats.map((item) => {
       const catName = item.name.toLowerCase();
