@@ -1,7 +1,6 @@
 import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
-import { server } from '../../config/index'
 
 export default function Category({ categoryItems, products }) {
   const pageTitle = categoryItems.length
@@ -23,7 +22,7 @@ export default function Category({ categoryItems, products }) {
 }
 
 export async function getStaticPaths() {
-  const {cats} = await import('../../data/category/category.json')
+  const { cats } = await import("../../data/category/category.json");
   return {
     paths: cats.map((item) => {
       const catName = item.name.toLowerCase();
@@ -38,7 +37,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const {categoryItems} = await import(`../../data/products/${params.catName}Data.json`)
+  const { categoryItems } = await import(
+    `../../data/products/${params.catName}Data.json`
+  );
   return {
     props: {
       categoryItems,
