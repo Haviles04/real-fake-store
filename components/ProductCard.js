@@ -58,7 +58,6 @@ function ProductCard({ item }) {
         href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title
           .toLowerCase()
           .replace(/\s/g, "")}`}
-          prefetch={false}
       >
         <Image
           className={styles.productImage}

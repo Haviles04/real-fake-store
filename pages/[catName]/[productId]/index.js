@@ -7,8 +7,9 @@ import { useCart } from "../../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
   const { dispatch } = useCart();
-  const product = pageProduct[0];
-  const [bigImage, setBigImage] = useState(product.images[0]);
+  console.log(pageProduct);
+  const product = pageProduct;
+  /*const [bigImage, setBigImage] = useState(product.images[0]);
   const [secondImage, setSecondImage] = useState(product.images[1]);
   const [thirdImage, setThirdImage] = useState(product.images[2]);
 
@@ -84,14 +85,14 @@ export default function Products({ pageProduct }) {
         </form>
       </div>
     </div>
-  );
+  ); */
 }
 
 export async function getStaticPaths() {
   const {products} = await import('../../../data/products/all.json')
   return {
     paths: products.map((item) => {
-      const productId = item.id.toString();
+      const productId = item.id;
       const productName = item.title
         .toLowerCase()
         .replace(/\s/g, "")
@@ -104,7 +105,7 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
