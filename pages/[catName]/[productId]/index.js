@@ -7,10 +7,10 @@ import { useCart } from "../../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
   const { dispatch } = useCart();
-  const product = pageProduct[0];
-  const [bigImage, setBigImage] = useState(product.images[0]);
-  const [secondImage, setSecondImage] = useState(product.images[1]);
-  const [thirdImage, setThirdImage] = useState(product.images[2]);
+ 
+  const [bigImage, setBigImage] = useState(pageProduct.images[0]);
+  const [secondImage, setSecondImage] = useState(pageProduct.images[1]);
+  const [thirdImage, setThirdImage] = useState(pageProduct.images[2]);
 
   const swapImages = (current) => {
     const filler = bigImage;
@@ -29,10 +29,10 @@ export default function Products({ pageProduct }) {
     dispatch({
       type: "addToCart",
       payload: {
-        name: product.title,
-        id: product.id,
-        image: product.images[0],
-        price: product.price,
+        name: pageProduct.title,
+        id: pageProduct.id,
+        image: pageProduct.images[0],
+        price: pageProduct.price,
         qty: 1,
       },
     });
@@ -40,16 +40,16 @@ export default function Products({ pageProduct }) {
 
   return (
     <div>
-      <Meta title={product.title} descript={product.description} />
+      <Meta title={pageProduct.title} descript={pageProduct.description} />
       <div className={styles.productPageContainer}>
         <div className={styles.borderDiv}>
-          <h1>{product.title}</h1>
+          <h1>{pageProduct.title}</h1>
           <div className={styles.productContainer}>
             <div className={styles.zoomContainer}>
               <Image
                 className={styles.bigImage}
                 src={bigImage}
-                alt={product.title}
+                alt={pageProduct.title}
                 width={640}
                 height={480}
               />
@@ -59,7 +59,7 @@ export default function Products({ pageProduct }) {
                 className={styles.imageTwo}
                 onClick={() => swapImages("second")}
                 src={secondImage}
-                alt={product.title}
+                alt={pageProduct.title}
                 width={640}
                 height={480}
               />
@@ -67,14 +67,14 @@ export default function Products({ pageProduct }) {
                 onClick={() => swapImages("third")}
                 className={styles.imageThree}
                 src={thirdImage}
-                alt={product.title}
+                alt={pageProduct.title}
                 width={640}
                 height={480}
               />
             </div>
           </div>
-          <h2>${product.price}</h2>
-          <p>{product.description}</p>
+          <h2>${pageProduct.price}</h2>
+          <p>{pageProduct.description}</p>
         </div>
         <form>
           <button onClick={(e) => handleClick(e)} className={styles.cartButton}>
@@ -112,8 +112,8 @@ export async function getStaticProps({ params }) {
   const { categoryItems } = await import(
     `../../../data/products/${params.catName}Data.json`
   );
-
-  const pageProduct = categoryItems.filter(
+  
+  const pageProduct = categoryItems.find(
     (item) => item.id === parseInt(params.productId)
   );
 
