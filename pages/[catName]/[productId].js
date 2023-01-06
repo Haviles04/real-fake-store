@@ -22,18 +22,15 @@ export default function Products({ pageProduct }) {
     }
   };
 
+  console.log(pageProduct)
+
   const handleClick = (e) => {
     e.preventDefault();
     dispatch({
       type: "addToCart",
-      payload: {
-        name: pageProduct.title,
-        id: pageProduct.id,
-        image: pageProduct.images[0],
-        price: pageProduct.price,
-        qty: 1,
+      payload: pageProduct
       },
-    });
+    );
   };
 
   return (
@@ -112,6 +109,7 @@ export async function getStaticProps({ params }) {
     (item) => item.id === parseInt(params.productId)
   );
 
+ 
   return {
     props: {
       pageProduct,

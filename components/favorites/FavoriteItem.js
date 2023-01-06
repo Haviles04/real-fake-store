@@ -12,13 +12,7 @@ const FavoriteItem = ({ item }) => {
   const handleAddToCartClick = () => {
     dispatch({
       type: "addToCart",
-      payload: {
-        name: item.title,
-        id: item.id,
-        image: item.images[0],
-        price: item.price,
-        qty: 1,
-      },
+      payload: item
     });
     dispatchFavorites({ type: "removeFromFavorites", payload: item });
   };
