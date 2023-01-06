@@ -11,11 +11,18 @@ import { GrCart } from "react-icons/gr";
 import { GrClose } from "react-icons/gr";
 import { FiHeart } from "react-icons/fi";
 import SearchBar from "./SearchBar";
+import { useRouter } from "next/router";
 
 function MobileNavbar({ cats }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const { cart } = useCart();
+  const router = useRouter();
+
+  useEffect(() => {
+    setMenuIsOpen(false);
+    setSearchIsOpen(false);
+  }, [router.asPath]);
 
   const handleClick = () => {
     setMenuIsOpen(false);
