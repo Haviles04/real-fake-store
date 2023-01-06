@@ -88,7 +88,8 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const { products } = await import("../../../data/products/allData.json");
+  const data = await import("../../../data/products/allData.json");
+  const products = data.products;
   return {
     paths: products.map((item) => {
       const productId = item.id;
