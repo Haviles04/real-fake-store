@@ -25,10 +25,9 @@ export async function getStaticPaths() {
   const { cats } = await import("../../data/category/categoryData.json");
   return {
     paths: cats.map((item) => {
-      const catName = item.name.toLowerCase();
       return {
         params: {
-          catName,
+          catName : item.name.toLowerCase()
         },
       };
     }),
