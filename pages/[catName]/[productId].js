@@ -4,17 +4,12 @@ import Meta from "../../components/Meta";
 import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
 import { useCart } from "../../customCartHook/CartContextProvider";
-import path from 'path'
-import fs from 'fs/promises'
 
 export default function Products({ pageProduct }) {
   const { dispatch } = useCart();
   const [bigImage, setBigImage] = useState(pageProduct.images[0]);
   const [secondImage, setSecondImage] = useState(pageProduct.images[1]);
   const [thirdImage, setThirdImage] = useState(pageProduct.images[2]);
-
-
-
 
   const swapImages = (current) => {
     const filler = bigImage;
@@ -91,11 +86,9 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const filePath = path.join(process.cwd(), 'data/products', 'allData.json')
-  const fileData = await fs.readFile(filePath);
-  const products = JSON.parse(fileData.toString());
+  const {products} = await import("../../data/products/allData.json");
   return {
-    paths: products.products.map((item) => {
+    paths: products.map((item) => {
       const productName = item.title
         .toLowerCase()
         .replace(/\s/g, "");
@@ -111,11 +104,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(process.cwd(), 'data/products', `${params.catName}Data.json`)
-  const fileData = await fs.readFile(filePath);
-  const categoryItems = JSON.parse(fileData.toString());
+  const { categoryItems } = await import(
+    `../../data/products/${params.catName}Data.json`
+  );
 
-  const pageProduct = categoryItems.categoryItems.find(
+  const pageProduct = categoryItems.find(
     (item) => item.id === parseInt(params.productId)
   );
 
