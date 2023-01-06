@@ -32,10 +32,30 @@ function ProductCard({ item }) {
     e.preventDefault();
     const already = favorites.items.find((favItem) => item.id === favItem.id);
     if (already) {
-      dispatchFavorites({ type: "removeFromFavorites", payload: item });
+      dispatchFavorites({
+        type: "removeFromFavorites",
+        payload: {
+          title: item.title,
+          id: item.id,
+          images: item.images,
+          price: item.price,
+          qty: 1,
+          category: item.category.name,
+        },
+      });
       return;
     }
-    dispatchFavorites({ type: "addToFavorites", payload: item });
+    dispatchFavorites({
+      type: "addToFavorites",
+      payload: {
+        title: item.title,
+        id: item.id,
+        images: item.images,
+        price: item.price,
+        qty: 1,
+        category: item.category.name,
+      },
+    });
   };
 
   const handleClick = (e) => {
@@ -48,7 +68,7 @@ function ProductCard({ item }) {
         images: item.images,
         price: item.price,
         qty: 1,
-        category: item.category.name
+        category: item.category.name,
       },
     });
   };
@@ -56,9 +76,9 @@ function ProductCard({ item }) {
   return (
     <div className={styles.productCard} key={item.id}>
       <Link
-        href={`/${item.category.name.toLowerCase()}/product/${item.id}=${item.title
-          .toLowerCase()
-          .replace(/\s/g, "")}`}
+        href={`/${item.category.name.toLowerCase()}/product/${
+          item.id
+        }=${item.title.toLowerCase().replace(/\s/g, "")}`}
       >
         <Image
           className={styles.productImage}
