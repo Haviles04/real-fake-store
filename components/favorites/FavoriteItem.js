@@ -25,7 +25,7 @@ const FavoriteItem = ({ item }) => {
     <div className={styles.itemContainer}>
       <div className={styles.itemInfo}>
         <Link
-          href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title
+          href={`/${item.category.name.toLowerCase()}/product/${item.id}=${item.title
             .toLowerCase()
             .replace(/\s/g, "")}`}
         >

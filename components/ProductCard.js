@@ -43,9 +43,9 @@ function ProductCard({ item }) {
     dispatch({
       type: "addToCart",
       payload: {
-        name: item.title,
+        title: item.title,
         id: item.id,
-        image: item.images[0],
+        images: item.images,
         price: item.price,
         qty: 1,
         category: item.category.name
@@ -56,7 +56,7 @@ function ProductCard({ item }) {
   return (
     <div className={styles.productCard} key={item.id}>
       <Link
-        href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title
+        href={`/${item.category.name.toLowerCase()}/product/${item.id}=${item.title
           .toLowerCase()
           .replace(/\s/g, "")}`}
       >

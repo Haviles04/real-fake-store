@@ -67,6 +67,7 @@
 
 .itemHeader a{
     text-decoration: none;
+    color: black;
 }
 
 .itemHeader a:visited{

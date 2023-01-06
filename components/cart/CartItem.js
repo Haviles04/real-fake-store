@@ -7,8 +7,8 @@ import Link from "next/link";
 
 function CartItem({ item }) {
   const { cart, dispatch } = useCart();
-  const [totalPrice, setTotalPrice] = useState(item.price * item.qty);
-  const qtySelect = useRef();
+  const [totalPrice, setTotalPrice] = useState(parseInt(item.price) * item.qty);
+  const qtySelect = useRef(1);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -34,11 +34,11 @@ function CartItem({ item }) {
     <tbody className={styles.cartItemContainer}>
       <tr>
         <td className={styles.itemHeader}>
-          <Link href={`/${item.category.toLowerCase()}/${item.id}=${item.name
+          <Link href={`/${item.category.toLowerCase()}/product/${item.id}=${item.title
           .toLowerCase()
           .replace(/\s/g, "")}`}>
-            <img className={styles.itemImg} src={item.image} />
-            <h4>{item.name}</h4>
+            <img className={styles.itemImg} src={item.images[0]} />
+            <h4>{item.title}</h4>
           </Link>
         </td>
         <td className={styles.quantity}>
