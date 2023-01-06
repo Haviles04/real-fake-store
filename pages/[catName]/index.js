@@ -3,10 +3,7 @@ import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
 
 export default function Category({ categoryItems, products }) {
-  const pageTitle = categoryItems.length
-    ? categoryItems[0].category.name
-    : "We are still working on this page!";
-
+ 
   return (
     <div className={styles.main}>
       <Meta title={pageTitle} descript={pageTitle} />

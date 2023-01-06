@@ -23,6 +23,5 @@ App.getInitialProps = async () => {
   const {cats} = await import(`../data/category/categoryData.json`)
   return {
     cats,
-    
   };
 };
