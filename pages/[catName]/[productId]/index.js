@@ -88,7 +88,7 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  try{const {products} = await import('../../../data/products/all.json')
+  const {products} = await import('../../../data/products/all.json')
   return {
     paths: products.map((item) => {
       const productId = item.id.toString();
@@ -105,10 +105,7 @@ export async function getStaticPaths() {
       };
     }),
     fallback: false,
-  };}
-  catch(err) {
-    console.log('heres your error')
-  }
+  };
 }
 
 export async function getStaticProps({ params }) {
