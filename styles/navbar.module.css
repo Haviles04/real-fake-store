@@ -50,7 +50,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 990px) {
+@media (max-width: 990px) {
   .mobileBar {
     height: 5rem;
     display: flex;
@@ -102,7 +102,6 @@
 
   .mobileNavLinks {
     background-color: rgb(17, 17, 17);
-    color: white;
     position: absolute;
     top: 5rem;
     width: 100%;
@@ -111,27 +110,27 @@
 
   .navList ul {
     width: 100%;
-    color: white;
     display: flex;
     flex-direction: column;
     list-style: none;
   }
 
+
   .navList li {
     padding: 1rem;
     list-style: none;
-    color: white;
     font-size: 2rem;
     list-style-type: none;
   }
 
-  .navList li a:visited {
+  .navLinks span{
+    color:white;
+  }
+
+  .navList span:visited {
     color: white;
   }
 
-  .navList a:visted {
-    color: white;
-  }
 
   .logo {
     width: 5rem;
