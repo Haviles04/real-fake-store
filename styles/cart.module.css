@@ -65,6 +65,13 @@
    max-width: 300px;
 }
 
+.itemHeader a{
+    text-decoration: none;
+}
+
+.itemHeader a:visited{
+    color: black;
+}
 
 
 

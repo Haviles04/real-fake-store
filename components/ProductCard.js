@@ -48,6 +48,7 @@ function ProductCard({ item }) {
         image: item.images[0],
         price: item.price,
         qty: 1,
+        category: item.category.name
       },
     });
   };

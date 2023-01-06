@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { useCart } from "../../customCartHook/CartContextProvider";
 import styles from "../../styles/cart.module.css";
+import Link from "next/link";
 
 function CartItem({ item }) {
   const { cart, dispatch } = useCart();
@@ -33,8 +34,12 @@ function CartItem({ item }) {
     <tbody className={styles.cartItemContainer}>
       <tr>
         <td className={styles.itemHeader}>
-          <img className={styles.itemImg} src={item.image} />
-          <h4>{item.name}</h4>
+          <Link href={`/${item.category.toLowerCase()}/${item.id}=${item.name
+          .toLowerCase()
+          .replace(/\s/g, "")}`}>
+            <img className={styles.itemImg} src={item.image} />
+            <h4>{item.name}</h4>
+          </Link>
         </td>
         <td className={styles.quantity}>
           <label htmlFor="quantity">Quantity</label>
