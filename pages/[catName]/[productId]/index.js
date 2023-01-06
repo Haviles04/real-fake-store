@@ -7,14 +7,12 @@ import { useCart } from "../../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
   const { dispatch } = useCart();
- 
   const [bigImage, setBigImage] = useState(pageProduct.images[0]);
   const [secondImage, setSecondImage] = useState(pageProduct.images[1]);
   const [thirdImage, setThirdImage] = useState(pageProduct.images[2]);
 
   const swapImages = (current) => {
     const filler = bigImage;
-
     if (current === "second") {
       setBigImage(secondImage);
       setSecondImage(filler);
@@ -105,7 +103,7 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback:false,
+    fallback: false,
   };
 }
 
@@ -113,7 +111,7 @@ export async function getStaticProps({ params }) {
   const { categoryItems } = await import(
     `../../../data/products/${params.catName}Data.json`
   );
-  
+
   const pageProduct = categoryItems.find(
     (item) => item.id === parseInt(params.productId)
   );
