@@ -14,7 +14,7 @@ export default function NavLinks({ cats, onMobile, setMenuIsOpen }) {
         {cats.map((cat) => (
           <li key={cat.id}>
             <Link onClick={() => closeMenu()} href={`/${cat.name.toLowerCase()}`}>
-              {cat.name}
+              <a>{cat.name}</a>
             </Link>
           </li>
         ))}
