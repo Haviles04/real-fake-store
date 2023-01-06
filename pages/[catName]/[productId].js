@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Image from "next/image";
-import Meta from "../../../components/Meta";
-import styles from "../../../styles/productPage.module.css";
+import Meta from "../../components/Meta";
+import styles from "../../styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
-import { useCart } from "../../../customCartHook/CartContextProvider";
+import { useCart } from "../../customCartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
   const { dispatch } = useCart();
@@ -86,7 +86,7 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const {products} = await import("../../../data/products/allData.json");
+  const {products} = await import("../../data/products/allData.json");
   return {
     paths: products.map((item) => {
       const productName = item.title
@@ -105,7 +105,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { categoryItems } = await import(
-    `../../../data/products/${params.catName}Data.json`
+    `../../data/products/${params.catName}Data.json`
   );
 
   const pageProduct = categoryItems.find(
