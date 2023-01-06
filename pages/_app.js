@@ -20,7 +20,7 @@ export default function App({ Component, pageProps, cats}) {
 }
 
 App.getInitialProps = async () => {
-  const {cats} = await import(`../data/category/category.json`)
+  const {cats} = await import(`../data/category/categoryData.json`)
   return {
     cats,
     
