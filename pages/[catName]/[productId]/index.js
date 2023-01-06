@@ -109,9 +109,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const {products} = await import('../../../data/products/all.json')
+  const {categoryItems} = await import(`../../../data/products/${params.catName}Data.json`)
 
-  const pageProduct = products.filter(
+  const pageProduct = categoryItems.filter(
     (item) => item.id === parseInt(params.productId)
   );
 
