@@ -20,7 +20,7 @@ export default function Products({ allProducts }) {
 }
 
 export async function getStaticProps() {
-  const {products} = await import('../../data/products/all.json')
+  const {products} = await import('../../data/products/allData.json')
   
   return {
     props: {
