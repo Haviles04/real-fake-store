@@ -88,22 +88,23 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const  {products}  = await import("../../../data/products/all.json");
-  const allPaths = products.map((item) => {
-    const productId = item.id;
-    const productName = item.title.toLowerCase().replace(/\s/g, "").toString();
-    const catName = item.category.name.toLowerCase().toString();
-    return {
-      params: {
-        catName,
-        productId: `${productId}=${productName}`,
-      },
-    };
-  });
-
+  const { products } = await import("../../../data/products/all.json");
   return {
-    paths: allPaths,
-    fallback: false,
+    paths: products.map((item) => {
+      const productId = item.id;
+      const productName = item.title
+        .toLowerCase()
+        .replace(/\s/g, "")
+        .toString();
+      const catName = item.category.name.toLowerCase().toString();
+      return {
+        params: {
+          catName,
+          productId: `${productId}=${productName}`,
+        },
+      };
+    }),
+    fallback: "blocking",
   };
 }
 
