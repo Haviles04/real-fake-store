@@ -2,13 +2,12 @@ import ProductCard from "../../components/ProductCard";
 import Meta from "../../components/Meta";
 import styles from "../../styles/category.module.css";
 
-export default function Category({ categoryItems, products }) {
- 
+export default function Category({ categoryItems, products, catName }) {
+  
   return (
     <div className={styles.main}>
-      <Meta title={pageTitle} descript={pageTitle} />
-
-      <h1>{pageTitle}</h1>
+      <Meta title={catName} descript={catName} />
+      <h1>{catName.toUpperCase()}</h1>
       <div className={styles.container}>
         {categoryItems.map((item) => (
           <ProductCard products={products} key={item.id} item={item} />
@@ -36,9 +35,11 @@ export async function getStaticProps({ params }) {
   const { categoryItems } = await import(
     `../../data/products/${params.catName}Data.json`
   );
+ 
   return {
     props: {
       categoryItems,
+      catName: params.catName
     },
   };
 }
