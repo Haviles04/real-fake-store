@@ -34,7 +34,7 @@ export default function Search({products}) {
 
 
 export async function getStaticProps() {
-  const {products} = await import('../data/data.json')
+  const {products} = await import('@/data/data.json')
   return {
     props: {
       products,
