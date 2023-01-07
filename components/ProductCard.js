@@ -76,7 +76,7 @@ function ProductCard({ item }) {
   return (
     <div className={styles.productCard} key={item.id}>
       <Link
-        href={`/${item.category.name.toLowerCase()}/product/${
+        href={`/${item.category.name.toLowerCase()}/${
           item.id
         }=${item.title.toLowerCase().replace(/\s/g, "")}`}
       >

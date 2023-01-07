@@ -16,7 +16,7 @@ function CarouselCard({ item, pcRef }) {
 
   return (
     <div ref={pcRef} className={styles.productCard} key={item.id}>
-      <Link href={`/${item.category.name.toLowerCase()}/product/${item.id}=${item.title.toLowerCase().replace(/\s/g, '')}`}>
+      <Link href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title.toLowerCase().replace(/\s/g, '')}`}>
         <img
           className={styles.productImage}
           onMouseOver={() => {
