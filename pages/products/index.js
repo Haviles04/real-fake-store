@@ -20,7 +20,7 @@ export default function Products({ allProducts }) {
 }
 
 export async function getServerSideProps() {
-  const {products} = await import('../../data/products/allData.json')
+  const {products} = await import('../../data/data.json')
   
   return {
     props: {
