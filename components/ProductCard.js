@@ -78,7 +78,7 @@ function ProductCard({ item }) {
 
   return (
     <div className={styles.productCard} key={item.id}>
-      <Link href={productLink} as={productLink}>
+      <Link href={productLink} passHref>
         <Image
           className={styles.productImage}
           onMouseOver={() => {

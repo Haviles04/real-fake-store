@@ -19,7 +19,7 @@ function CarouselCard({ item, pcRef }) {
 
   return (
     <div ref={pcRef} className={styles.productCard} key={item.id}>
-      <Link href={productLink} as={productLink}>
+      <Link href={productLink} passHref>
         <img
           className={styles.productImage}
           onMouseOver={() => {
