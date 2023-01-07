@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../../styles/footer.module.css";
+import styles from "@/styles/footer.module.css";
 
 const Footer = ({ cats }) => {
   return (
@@ -9,7 +9,7 @@ const Footer = ({ cats }) => {
         <ul>
           {cats.map((cat) => (
             <li key={cat.id}>
-              <Link href={cat.name.toLowerCase()}>{cat.name}</Link>
+              <Link href={cat.name.toLowerCase()} as={`/${cat.name.toLowerCase()}`} >{cat.name}</Link>
             </li>
           ))}
         </ul>

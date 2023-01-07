@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { useCart } from "../../customCartHook/CartContextProvider";
-import CartItem from "../../components/cart/CartItem";
-import styles from "../../styles/cart.module.css";
+import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import CartItem from "@/components/cart/CartItem";
+import styles from "@/styles/cart.module.css";
 
 export default function Cart() {
   const { cart } = useCart();

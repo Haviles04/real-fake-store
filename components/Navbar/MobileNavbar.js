@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useCart } from "../../customCartHook/CartContextProvider";
+import { useCart } from "@/hooks/customCartHook/CartContextProvider";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../../styles/navbar.module.css";
-import logo from "../../public/logo.png";
+import styles from "@/styles/navbar.module.css";
+import logo from "@/public/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 import { GrCart } from "react-icons/gr";

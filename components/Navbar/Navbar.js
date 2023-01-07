@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../../styles/navbar.module.css";
-import logo from "../../public/logo.png";
+import styles from "@/styles/navbar.module.css";
+import logo from "@/public/logo.png";
 import SearchBar from "./SearchBar";
 import NavLinks from "./NavLinks";
-import { useCart } from "../../customCartHook/CartContextProvider";
-import { useFavorites } from "../../customFavoritesHook/FavoritesContextProvider";
+import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import { useFavorites } from "@/hooks/customFavoritesHook/FavoritesContextProvider";
 
 
 function Navbar({ cats }) {

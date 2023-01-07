@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
-import { useSearch } from "../../customSearchHook/SearchContextProvider";
+import { useSearch } from "@/hooks/customSearchHook/SearchContextProvider";
 
 function SearchBar({ setSearchIsOpen, onMobile }) {
   const { searchTerm, setSearchTerm } = useSearch();

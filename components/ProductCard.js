@@ -1,18 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import styles from "../styles/productCard.module.css";
+import styles from "@/styles/productCard.module.css";
 import { GrCart } from "react-icons/gr";
 import { BsHeart } from "react-icons/bs";
 import { BsHeartFill } from "react-icons/bs";
-import { useCart } from "../customCartHook/CartContextProvider";
-import { useFavorites } from "../customFavoritesHook/FavoritesContextProvider";
+import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import { useFavorites } from "@/hooks/customFavoritesHook/FavoritesContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
   const { favorites, dispatchFavorites } = useFavorites();
   const [isFavorited, setIsFavorited] = useState(false);
   const { dispatch } = useCart();
+  const productLink = `/${item.category.name.toLowerCase()}/${
+    item.id
+  }=${item.title.toLowerCase().replace(/\s/g, "")}`;
 
   useEffect(() => {
     favorites.items.find((favItem) => item.id === favItem.id)
@@ -75,11 +78,7 @@ function ProductCard({ item }) {
 
   return (
     <div className={styles.productCard} key={item.id}>
-      <Link
-        href={`/${item.category.name.toLowerCase()}/${
-          item.id
-        }=${item.title.toLowerCase().replace(/\s/g, "")}`}
-      >
+      <Link href={productLink} as={productLink}>
         <Image
           className={styles.productImage}
           onMouseOver={() => {

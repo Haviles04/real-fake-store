@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/index.module.css";
-import Meta from "../components/Meta";
-import sale1 from "../public/sale1.jpg";
-import sale2 from "../public/sale2.jpg";
-import Carousel from "../components/Carousel/Carousel";
+import styles from "@/styles/index.module.css";
+import Meta from "@/components/Meta";
+import sale1 from "@/public/sale1.jpg";
+import sale2 from "@/public/sale2.jpg";
+import Carousel from "@/components/Carousel/Carousel";
 
 export default function Home({suggested}) {
   return (

@@ -1,8 +1,8 @@
-import Layout from "../components/Layout";
-import "../styles/globals.css";
-import { CartContextProvider } from "../customCartHook/CartContextProvider";
-import SearchContextProvider from "../customSearchHook/SearchContextProvider";
-import FavoritesContextProvider from "../customFavoritesHook/FavoritesContextProvider";
+import Layout from "@/components/Layout";
+import "@/styles/globals.css";
+import { CartContextProvider } from "@/hooks/customCartHook/CartContextProvider";
+import SearchContextProvider from "@/hooks/customSearchHook/SearchContextProvider";
+import FavoritesContextProvider from "@/hooks/customFavoritesHook/FavoritesContextProvider";
 
 
 export default function App({ Component, pageProps, cats}) {

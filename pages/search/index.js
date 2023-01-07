@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import ProductCard from "../../components/ProductCard";
-import styles from "../../styles/search.module.css";
+import ProductCard from "@/components/ProductCard";
+import styles from "@/styles/search.module.css";
 
 export default function Search({ products}) {
   const router = useRouter();

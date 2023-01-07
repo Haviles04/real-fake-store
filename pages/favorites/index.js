@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { useFavorites } from '../../customFavoritesHook/FavoritesContextProvider'
-import FavoriteItem from '../../components/favorites/FavoriteItem'
-import styles from '../../styles/favorites.module.css'
+import { useFavorites } from '@/hooks/customFavoritesHook/FavoritesContextProvider'
+import FavoriteItem from '@/components/favorites/FavoriteItem'
+import styles from '@/styles/favorites.module.css'
 
 export default function Favorites() {
   const { favorites } = useFavorites();

@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import styles from "../../styles/carousel.module.css";
+import styles from "@/styles/carousel.module.css";
 import CarouselCard from "./CarouselCard";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";

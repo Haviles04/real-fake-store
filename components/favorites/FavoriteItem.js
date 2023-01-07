@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import styles from "../../styles/favorites.module.css";
+import styles from "@/styles/favorites.module.css";
 import { GrCart } from "react-icons/gr";
-import { useCart } from "../../customCartHook/CartContextProvider";
-import { useFavorites } from "../../customFavoritesHook/FavoritesContextProvider";
+import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import { useFavorites } from "@/hooks/customFavoritesHook/FavoritesContextProvider";
 import Link from "next/link";
 const FavoriteItem = ({ item }) => {
   const { dispatch } = useCart();
@@ -25,7 +25,7 @@ const FavoriteItem = ({ item }) => {
     <div className={styles.itemContainer}>
       <div className={styles.itemInfo}>
         <Link
-          href={`/${item.category.toLowerCase()}/product/${item.id}=${item.title
+          href={`/${item.category.toLowerCase()}/${item.id}=${item.title
             .toLowerCase()
             .replace(/\s/g, "")}`}
         >
