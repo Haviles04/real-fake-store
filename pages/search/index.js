@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import ProductCard from "@/components/ProductCard";
 import styles from "@/styles/search.module.css";
 
-export default function Search({ products}) {
+export default function Search({products}) {
   const router = useRouter();
   const searchTerm = router.query["product"]
   const matchingProducts = products
@@ -33,3 +33,11 @@ export default function Search({ products}) {
 }
 
 
+export async function getStaticProps() {
+  const {products} = await import('../data/data.json')
+  return {
+    props: {
+      products,
+    },
+  };
+}
