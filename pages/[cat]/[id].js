@@ -26,9 +26,15 @@ export default function Products({ pageProduct }) {
     e.preventDefault();
     dispatch({
       type: "addToCart",
-      payload: pageProduct
+      payload: {
+        title: pageProduct.title,
+        id: pageProduct.id,
+        images: pageProduct.images,
+        price: pageProduct.price,
+        qty: 1,
+        category: pageProduct.category.name,
       },
-    );
+    });
   };
 
   return (
@@ -81,15 +87,13 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const {products} = await import("../../data/data.json");
+  const { products } = await import("../../data/data.json");
   return {
     paths: products.map((item) => {
-      const productName = item.title
-        .toLowerCase()
-        .replace(/\s/g, "");
+      const productName = item.title.toLowerCase().replace(/\s/g, "");
       return {
         params: {
-          cat :  item.category.name.toString().toLowerCase(),
+          cat: item.category.name.toString().toLowerCase(),
           id: `${item.id}=${productName}`,
         },
       };
@@ -99,13 +103,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { products } = await import(
-    `../../data/data.json`
-  );
+  const { products } = await import(`../../data/data.json`);
 
-  const pageProduct = products.find(
-    (item) => item.id === parseInt(params.id)
-  );
+  const pageProduct = products.find((item) => item.id === parseInt(params.id));
 
   return {
     props: {
