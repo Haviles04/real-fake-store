@@ -81,7 +81,7 @@ export default function Products({ pageProduct }) {
 }
 
 export async function getStaticPaths() {
-  const {products} = await import("../../data/products/allData.json");
+  const {products} = await import("../../data/data.json");
   return {
     paths: products.map((item) => {
       const productName = item.title
@@ -99,15 +99,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { categoryItems } = await import(
-    `../../data/products/${params.cat}Data.json`
+  const { products } = await import(
+    `../../data/data.json`
   );
 
-  const pageProduct = categoryItems.find(
+  const pageProduct = products.find(
     (item) => item.id === parseInt(params.id)
   );
 
- 
   return {
     props: {
       pageProduct,

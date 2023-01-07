@@ -18,7 +18,7 @@ export default function Category({ categoryItems, products, cat }) {
 }
 
 export async function getStaticPaths() {
-  const { cats } = await import("../../data/category/categoryData.json");
+  const { cats } = await import("../../data/data.json");
   return {
     paths: cats.map((item) => {
       return {
@@ -31,15 +31,18 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const { categoryItems } = await import(
-    `../../data/products/${params.cat}Data.json`
-  );
+export async function getStaticProps({params}){
+  const {products} = await import('../../data/data.json');
+  const cat = params.cat
  
-  return {
-    props: {
+  const categoryItems = products.filter((item)=>
+    item.category.name.toString().toLowerCase() === cat
+  )
+
+  return{
+    props:{
       categoryItems,
-      cat: params.cat
-    },
-  };
+      cat
+    }
+  }
 }
