@@ -33,8 +33,8 @@ function ProductCard({ item }) {
 
   const handleHeartCLick = (e) => {
     e.preventDefault();
-    const already = favorites.items.find((favItem) => item.id === favItem.id);
-    if (already) {
+    const alreadyFavorite = favorites.items.find((favItem) => item.id === favItem.id);
+    if (alreadyFavorite) {
       dispatchFavorites({
         type: "removeFromFavorites",
         payload: {
