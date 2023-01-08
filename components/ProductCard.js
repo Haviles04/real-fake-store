@@ -37,27 +37,13 @@ function ProductCard({ item }) {
     if (already) {
       dispatchFavorites({
         type: "removeFromFavorites",
-        payload: {
-          title: item.title,
-          id: item.id,
-          images: item.images,
-          price: item.price,
-          qty: 1,
-          category: item.category.name,
-        },
+        payload: {...item, qty: 1},
       });
       return;
     }
     dispatchFavorites({
       type: "addToFavorites",
-      payload: {
-        title: item.title,
-        id: item.id,
-        images: item.images,
-        price: item.price,
-        qty: 1,
-        category: item.category.name,
-      },
+      payload: {...item, qty: 1},
     });
   };
 
@@ -65,14 +51,7 @@ function ProductCard({ item }) {
     e.preventDefault();
     dispatch({
       type: "addToCart",
-      payload: {
-        title: item.title,
-        id: item.id,
-        images: item.images,
-        price: item.price,
-        qty: 1,
-        category: item.category.name,
-      },
+      payload: {...item, qty: 1},
     });
   };
 

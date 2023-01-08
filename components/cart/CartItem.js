@@ -19,7 +19,7 @@ function CartItem({ item }) {
   };
 
   const handleChange = (e) => {
-    let qty = e.target.value;
+    let qty = parseInt(e.target.value)
     dispatch({
       type: "updateQty",
       payload: {
@@ -34,7 +34,7 @@ function CartItem({ item }) {
     <tbody className={styles.cartItemContainer}>
       <tr>
         <td className={styles.itemHeader}>
-          <Link href={`/${item.category.toLowerCase()}/${item.id}=${item.title
+          <Link href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title
           .toLowerCase()
           .replace(/\s/g, "")}`}>
             <img className={styles.itemImg} src={item.images[0]} />

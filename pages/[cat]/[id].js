@@ -26,14 +26,7 @@ export default function Products({ pageProduct }) {
     e.preventDefault();
     dispatch({
       type: "addToCart",
-      payload: {
-        title: pageProduct.title,
-        id: pageProduct.id,
-        images: pageProduct.images,
-        price: pageProduct.price,
-        qty: 1,
-        category: pageProduct.category.name,
-      },
+      payload: {...pageProduct, qty: 1},
     });
   };
 

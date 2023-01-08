@@ -8,6 +8,7 @@ import Link from "next/link";
 const FavoriteItem = ({ item }) => {
   const { dispatch } = useCart();
   const { dispatchFavorites } = useFavorites();
+  console.log(item)
 
   const handleAddToCartClick = () => {
     dispatch({
@@ -25,7 +26,7 @@ const FavoriteItem = ({ item }) => {
     <div className={styles.itemContainer}>
       <div className={styles.itemInfo}>
         <Link
-          href={`/${item.category.toLowerCase()}/${item.id}=${item.title
+          href={`/${item.category.name.toLowerCase()}/${item.id}=${item.title
             .toLowerCase()
             .replace(/\s/g, "")}`}
         >
