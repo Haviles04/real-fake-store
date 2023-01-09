@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import styles from "@/styles/notification.module.css";
 import { useNotification } from "@/hooks/notificationsHook/NotificationContextProvider";
-import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 
 function Notification() {
@@ -23,8 +22,8 @@ function Notification() {
             <h1>Added to cart!</h1>
             <h2>{notificationItem.title}</h2>
             <Image
-              width={250}
-              height={250}
+              width={300}
+              height={300}
               alt={notificationItem.title}
               src={notificationItem.images[0]}
             ></Image>
