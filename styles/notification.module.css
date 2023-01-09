@@ -27,7 +27,7 @@
 
 .notificationContainer img {
   width: 300px;
-  height: auto;
+  height: 225px;
 }
 
 @media (max-width: 990px) {
