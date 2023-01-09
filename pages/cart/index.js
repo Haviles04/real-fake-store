@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import { useCart } from "@/hooks/cartHook/CartContextProvider";
 import CartItem from "@/components/cart/CartItem";
 import styles from "@/styles/cart.module.css";
 

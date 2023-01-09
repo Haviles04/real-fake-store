@@ -3,7 +3,7 @@ import Image from "next/image";
 import Meta from "@/components/Meta";
 import styles from "@/styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
-import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import { useCart } from "@/hooks/cartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
   const { dispatch } = useCart();

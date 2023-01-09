@@ -5,8 +5,8 @@ import styles from "@/styles/navbar.module.css";
 import logo from "@/public/logo.png";
 import SearchBar from "./SearchBar";
 import NavLinks from "./NavLinks";
-import { useCart } from "@/hooks/customCartHook/CartContextProvider";
-import { useFavorites } from "@/hooks/customFavoritesHook/FavoritesContextProvider";
+import { useCart } from "@/hooks/cartHook/CartContextProvider";
+import { useFavorites } from "@/hooks/favoritesHook/FavoritesContextProvider";
 
 
 function Navbar({ cats }) {

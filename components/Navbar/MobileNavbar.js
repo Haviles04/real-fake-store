@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import { useCart } from "@/hooks/cartHook/CartContextProvider";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
 import Link from "next/link";

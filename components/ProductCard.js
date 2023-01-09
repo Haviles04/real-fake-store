@@ -5,8 +5,8 @@ import styles from "@/styles/productCard.module.css";
 import { GrCart } from "react-icons/gr";
 import { BsHeart } from "react-icons/bs";
 import { BsHeartFill } from "react-icons/bs";
-import { useCart } from "@/hooks/customCartHook/CartContextProvider";
-import { useFavorites } from "@/hooks/customFavoritesHook/FavoritesContextProvider";
+import { useCart } from "@/hooks/cartHook/CartContextProvider";
+import { useFavorites } from "@/hooks/favoritesHook/FavoritesContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);

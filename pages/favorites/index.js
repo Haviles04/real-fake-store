@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useFavorites } from '@/hooks/customFavoritesHook/FavoritesContextProvider'
+import { useFavorites } from '@/hooks/favoritesHook/FavoritesContextProvider'
 import FavoriteItem from '@/components/favorites/FavoriteItem'
 import styles from '@/styles/favorites.module.css'
 

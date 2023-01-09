@@ -2,8 +2,8 @@
 import React from "react";
 import styles from "@/styles/favorites.module.css";
 import { GrCart } from "react-icons/gr";
-import { useCart } from "@/hooks/customCartHook/CartContextProvider";
-import { useFavorites } from "@/hooks/customFavoritesHook/FavoritesContextProvider";
+import { useCart } from "@/hooks/cartHook/CartContextProvider";
+import { useFavorites } from "@/hooks/favoritesHook/FavoritesContextProvider";
 import Link from "next/link";
 const FavoriteItem = ({ item }) => {
   const { dispatch } = useCart();

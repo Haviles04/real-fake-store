@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useRef, useState } from "react";
-import { useCart } from "@/hooks/customCartHook/CartContextProvider";
+import { useCart } from "@/hooks/cartHook/CartContextProvider";
 import styles from "@/styles/cart.module.css";
 import Link from "next/link";
 
