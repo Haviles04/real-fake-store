@@ -36,7 +36,7 @@
     background-color: inherit;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .productCard{
         width: 90%;
         height: auto;
