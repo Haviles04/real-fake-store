@@ -8,12 +8,11 @@ import Link from "next/link";
 const FavoriteItem = ({ item }) => {
   const { dispatch } = useCart();
   const { dispatchFavorites } = useFavorites();
-  console.log(item)
 
   const handleAddToCartClick = () => {
     dispatch({
       type: "addToCart",
-      payload: item
+      payload: item,
     });
     dispatchFavorites({ type: "removeFromFavorites", payload: item });
   };
