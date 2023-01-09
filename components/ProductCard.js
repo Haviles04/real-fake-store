@@ -7,10 +7,12 @@ import { BsHeart } from "react-icons/bs";
 import { BsHeartFill } from "react-icons/bs";
 import { useCart } from "@/hooks/cartHook/CartContextProvider";
 import { useFavorites } from "@/hooks/favoritesHook/FavoritesContextProvider";
+import { useNotification } from "@/hooks/notificationsHook/NotificationContextProvider";
 
 function ProductCard({ item }) {
   const [hoverPic, setHoverPic] = useState(item.images[0]);
   const { favorites, dispatchFavorites } = useFavorites();
+  const { setShowNotification, setNotificationItem } = useNotification();
   const [isFavorited, setIsFavorited] = useState(false);
   const { dispatch } = useCart();
   const productLink = `/${item.category.name.toLowerCase()}/${
@@ -33,25 +35,29 @@ function ProductCard({ item }) {
 
   const handleHeartCLick = (e) => {
     e.preventDefault();
-    const alreadyFavorite = favorites.items.find((favItem) => item.id === favItem.id);
+    const alreadyFavorite = favorites.items.find(
+      (favItem) => item.id === favItem.id
+    );
     if (alreadyFavorite) {
       dispatchFavorites({
         type: "removeFromFavorites",
-        payload: {...item, qty: 1},
+        payload: { ...item, qty: 1 },
       });
       return;
     }
     dispatchFavorites({
       type: "addToFavorites",
-      payload: {...item, qty: 1},
+      payload: { ...item, qty: 1 },
     });
   };
 
   const handleClick = (e) => {
     e.preventDefault();
+    setShowNotification(true);
+    setNotificationItem(item);
     dispatch({
       type: "addToCart",
-      payload: {...item, qty: 1},
+      payload: { ...item, qty: 1 },
     });
   };
 
