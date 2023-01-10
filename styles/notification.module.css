@@ -4,16 +4,17 @@
   width: 100%;
   background-color: rgba(95, 95, 95, 0.644);
   top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .notificationContainer {
   border-radius: 5%;
   width: 25%;
   height: 50%;
-  top: 25%;
-  left: 50%;
-  margin-left: -12.5%;
-  position: fixed;
+  min-height: 575px;
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -26,8 +27,9 @@
 }
 
 .notificationContainer img {
-  width: 300px;
-  height: 225px;
+  width: 75%;
+  max-width: 300px;
+  height: auto;
 }
 
 @media (max-width: 1300px) {

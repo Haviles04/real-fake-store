@@ -7,6 +7,10 @@
     color: black;
 }
 
+.productCard{
+    padding: 10px;
+    box-shadow: 2px 2px 5px darkgray;
+}
 
 .productCard button:hover{
     cursor: pointer;
@@ -43,6 +47,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        box-shadow: none;
     }
 
     .cartAndHeart{
