@@ -43,6 +43,24 @@ function MobileNavbar({ cats }) {
           />
         </Link>
         <div>
+          <FiSearch
+            className={styles.search}
+            size={24}
+            onClick={() => {
+              setSearchIsOpen(!searchIsOpen);
+              setMenuIsOpen(false);
+            }}
+          />
+          <Link href="/favorites">
+            <FiHeart
+              onClick={() => {
+                handleClick();
+              }}
+              color="black"
+              className={styles.heart}
+              size={24}
+            />
+          </Link>
           <div className={styles.cartContainer}>
             <Link href="/cart">
               <GrCart
@@ -59,24 +77,7 @@ function MobileNavbar({ cats }) {
               ) : null}
             </Link>
           </div>
-          <Link href="/favorites">
-            <FiHeart
-              onClick={() => {
-                handleClick();
-              }}
-              color="black"
-              className={styles.heart}
-              size={24}
-            />
-          </Link>
-          <FiSearch
-            className={styles.search}
-            size={24}
-            onClick={() => {
-              setSearchIsOpen(!searchIsOpen);
-              setMenuIsOpen(false);
-            }}
-          />
+
           {menuIsOpen ? (
             <GrClose
               className={styles.hamburger}
