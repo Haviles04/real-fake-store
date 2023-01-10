@@ -2,8 +2,10 @@ import styles from "@/styles/layout.module.css";
 import Navbar from "@/components/Navbar/Navbar";
 import MobileNavbar from "./Navbar/MobileNavbar";
 import Footer from "./footer/footer";
+import { useEffect } from "react";
 
 function Layout({ children, cats }) {
+  
   return (
     <div className={styles.container}>
       <nav>

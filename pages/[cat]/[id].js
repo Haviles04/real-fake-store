@@ -1,11 +1,16 @@
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Meta from "@/components/Meta";
 import styles from "@/styles/productPage.module.css";
 import { GrCart } from "react-icons/gr";
 import { useCart } from "@/hooks/cartHook/CartContextProvider";
 
 export default function Products({ pageProduct }) {
+  
+  const router = useRouter()
+  const {params} = router.query;
+  
   const { dispatch } = useCart();
   const [bigImage, setBigImage] = useState(pageProduct.images[0]);
   const [secondImage, setSecondImage] = useState(pageProduct.images[1]);
@@ -79,26 +84,10 @@ export default function Products({ pageProduct }) {
   );
 }
 
-export async function getStaticPaths() {
-  const { products } = await import("../../data/data.json");
-  return {
-    paths: products.map((item) => {
-      const productName = item.title.toLowerCase().replace(/\s/g, "");
-      return {
-        params: {
-          cat: item.category.name.toString().toLowerCase(),
-          id: `${item.id}=${productName}`,
-        },
-      };
-    }),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const { products } = await import(`../../data/data.json`);
-
-  const pageProduct = products.find((item) => item.id === parseInt(params.id));
+  const [pageId, pageName] = params.id.split("=")
+  const pageProduct = products.find((item) => item.id === +pageId);
 
   return {
     props: {
